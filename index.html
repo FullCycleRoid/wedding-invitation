@@ -15,8 +15,8 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #fdf0e9, #fff5f0);
-            color: #5a4a42;
+            background: linear-gradient(135deg, #f8fbf8, #f0f8f0);
+            color: #4a6b4a;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -36,7 +36,7 @@
             position: relative;
         }
 
-        /* Конверт - улучшенный дизайн */
+        /* Конверт - бело-зеленый дизайн */
         .envelope-container {
             position: relative;
             width: 100%;
@@ -59,25 +59,25 @@
             height: 100%;
             backface-visibility: hidden;
             border-radius: 10px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
             overflow: hidden;
         }
 
         .envelope-front {
-            background: linear-gradient(135deg, #ffd1dc, #f8c8dc);
+            background: linear-gradient(135deg, #f0f8f0, #e0f0e0);
             transform: translateZ(1px);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 40px;
+            padding: 60px 20px 40px; /* Увеличили верхний отступ */
         }
 
         .envelope-back {
             background: #fff;
             transform: rotateX(180deg);
-            display: none; /* Скрываем обратную сторону */
+            display: none;
         }
 
         .envelope-flap {
@@ -86,7 +86,7 @@
             left: 0;
             width: 100%;
             height: 50%;
-            background: linear-gradient(135deg, #dda0dd, #c9a0dc);
+            background: linear-gradient(135deg, #d1e8d1, #c0e0c0);
             transform-origin: top;
             transform: rotateX(0deg);
             transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -105,14 +105,14 @@
             transform: translate(-50%, -50%);
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, #b76e79, #d4a5a5);
+            background: linear-gradient(135deg, #8db98d, #a0c8a0);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
             font-size: 3rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             z-index: 3;
             transition: transform 0.5s ease, opacity 0.5s ease;
             animation: sealPulse 2s infinite alternate;
@@ -127,9 +127,9 @@
         .invitation-title {
             font-family: 'Parisienne', cursive;
             font-size: 3.5rem;
-            color: #fff;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            color: #3a5a3a;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
             position: relative;
             z-index: 1;
         }
@@ -137,19 +137,22 @@
         .names {
             font-family: 'Cormorant Garamond', serif;
             font-size: 4.5rem;
-            color: #fff;
-            margin: 10px 0;
+            color: #3a5a3a;
+            margin: 15px 0;
             letter-spacing: 2px;
             position: relative;
-            display: inline-block;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+            padding-top: 20px; /* Дополнительный отступ сверху */
         }
 
         .open-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 30px;
+            color: rgba(58, 90, 58, 0.9);
+            margin-top: 40px;
             animation: pulse 2s infinite;
             font-weight: 500;
             position: relative;
@@ -163,22 +166,23 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.98);
             border-radius: 25px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             position: relative;
             transform: scale(0.9);
             opacity: 0;
             animation: scaleUp 1s 0.5s forwards;
             backdrop-filter: blur(5px);
-            padding: 40px;
+            padding: 40px 20px;
             margin: 20px;
+            border: 1px solid #e0f0e0;
         }
 
         .invitation-container.show {
             display: block;
         }
 
-        /* Заголовок приглашения с сердечком */
+        /* Заголовок приглашения */
         .invitation-header {
             text-align: center;
             margin-bottom: 40px;
@@ -194,31 +198,31 @@
             transform: translateX(-50%);
             width: 200px;
             height: 2px;
-            background: linear-gradient(to right, #e8c4b8, #d4a5a5, #e8c4b8);
+            background: linear-gradient(to right, #d1e8d1, #a0c8a0, #d1e8d1);
         }
 
         .invitation-names {
             font-family: 'Cormorant Garamond', serif;
             font-size: 4.5rem;
-            color: #b76e79;
+            color: #4a6b4a;
             margin: 15px 0;
             letter-spacing: 2px;
             position: relative;
             display: inline-block;
             opacity: 0;
             animation: fadeIn 1s 1s forwards;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .invitation-names span.heart {
-            color: #d4a5a5;
+            color: #8db98d;
             margin: 0 15px;
             animation: heartbeat 1.5s infinite;
         }
 
         .date {
             font-size: 1.8rem;
-            color: #8a5a44;
+            color: #5a7a5a;
             font-weight: 400;
             letter-spacing: 1px;
             opacity: 0;
@@ -229,7 +233,7 @@
         .photos-section {
             position: relative;
             z-index: 10;
-            padding: 0 20px;
+            padding: 0 10px;
             opacity: 0;
             animation: fadeIn 1s 1.5s forwards;
             margin-top: 20px;
@@ -238,8 +242,8 @@
         .photos-container {
             display: flex;
             justify-content: center;
-            gap: 60px;
             flex-wrap: wrap;
+            gap: 40px;
             perspective: 1000px;
         }
 
@@ -249,6 +253,7 @@
             height: 350px;
             transform-style: preserve-3d;
             transition: transform 0.6s ease;
+            margin-bottom: 60px;
         }
 
         .photo-wrapper:hover {
@@ -264,19 +269,20 @@
             height: 100%;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
             position: relative;
             transform: rotate(-5deg);
             transition: all 0.5s ease;
-            background: linear-gradient(45deg, #f8f0e5, #f5e7d9);
+            background: linear-gradient(45deg, #f8fbf8, #f0f8f0);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #d4a5a5;
+            color: #8db98d;
             font-size: 1.2rem;
             text-align: center;
             padding: 20px;
             cursor: pointer;
+            border: 1px solid #e0f0e0;
         }
 
         .photo-wrapper:nth-child(2) .photo-frame {
@@ -286,7 +292,7 @@
 
         .photo-frame:hover {
             transform: rotate(0deg) scale(1.05);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
         }
 
         .photo-frame img {
@@ -305,29 +311,30 @@
             bottom: -25px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 8px 25px;
             border-radius: 30px;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: #b76e79;
+            color: #4a6b4a;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             z-index: 20;
             transition: all 0.4s ease;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0f0e0;
         }
 
         .photo-wrapper:hover .photo-label {
-            background: #b76e79;
+            background: #8db98d;
             color: white;
             transform: translateX(-50%) translateY(-10px);
-            box-shadow: 0 10px 25px rgba(183, 110, 121, 0.4);
+            box-shadow: 0 10px 25px rgba(141, 185, 141, 0.4);
         }
 
         /* Основное содержимое */
         .content {
-            padding: 40px 20px 30px;
+            padding: 40px 15px 30px;
             text-align: center;
             position: relative;
         }
@@ -337,7 +344,7 @@
             max-width: 700px;
             margin: 0 auto 40px;
             line-height: 1.8;
-            color: #555;
+            color: #5a7a5a;
             position: relative;
             padding: 30px 0;
             opacity: 0;
@@ -350,7 +357,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 6rem;
             position: absolute;
-            color: rgba(232, 196, 184, 0.3);
+            color: rgba(141, 185, 141, 0.3);
             line-height: 1;
             opacity: 0.5;
         }
@@ -378,15 +385,15 @@
         }
 
         .detail-card {
-            background: #f9f4f0;
+            background: #f8fbf8;
             border-radius: 15px;
             padding: 25px;
             width: 250px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            border-top: 4px solid #e8c4b8;
+            border-top: 4px solid #d1e8d1;
             transform: translateY(30px);
             opacity: 0;
         }
@@ -397,7 +404,7 @@
 
         .detail-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
         }
 
         .detail-card::before {
@@ -407,26 +414,26 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(to right, #e8c4b8, #d4a5a5, #e8c4b8);
+            background: linear-gradient(to right, #d1e8d1, #a0c8a0, #d1e8d1);
             animation: borderFlow 8s linear infinite;
         }
 
         .detail-icon {
             font-size: 2.5rem;
-            color: #d4a5a5;
+            color: #8db98d;
             margin-bottom: 20px;
             transition: transform 0.5s ease, color 0.5s ease;
         }
 
         .detail-card:hover .detail-icon {
             transform: scale(1.2);
-            color: #b76e79;
+            color: #4a6b4a;
         }
 
         .detail-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
-            color: #8a5a44;
+            color: #5a7a5a;
             margin-bottom: 15px;
             font-weight: 600;
             position: relative;
@@ -440,30 +447,30 @@
             transform: translateX(-50%);
             width: 50px;
             height: 2px;
-            background: #e8c4b8;
+            background: #d1e8d1;
         }
 
         .detail-info {
             font-size: 1.3rem;
-            color: #666;
+            color: #6a8a6a;
             line-height: 1.6;
             margin-top: 15px;
         }
 
         /* Детали церемонии */
         .ceremony-details {
-            background: linear-gradient(to right, rgba(232, 196, 184, 0.1), rgba(212, 165, 165, 0.1));
-            border-left: 4px solid #d4a5a5;
+            background: linear-gradient(to right, rgba(209, 232, 209, 0.1), rgba(160, 200, 160, 0.1));
+            border-left: 4px solid #a0c8a0;
             padding: 25px;
             margin: 40px auto;
             max-width: 700px;
             border-radius: 0 15px 15px 0;
             font-size: 1.2rem;
-            color: #666;
+            color: #6a8a6a;
             position: relative;
             overflow: hidden;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
             transform: translateY(30px);
             opacity: 0;
             animation: fadeInUp 1s 3.1s forwards;
@@ -475,14 +482,14 @@
             top: 10px;
             right: 20px;
             font-size: 3rem;
-            color: rgba(212, 165, 165, 0.15);
+            color: rgba(141, 185, 141, 0.15);
             animation: pulse 3s infinite;
         }
 
         .ceremony-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
-            color: #8a5a44;
+            color: #5a7a5a;
             margin-bottom: 15px;
         }
 
@@ -504,7 +511,7 @@
         .signature {
             font-family: 'Parisienne', cursive;
             font-size: 3.5rem;
-            color: #d4a5a5;
+            color: #8db98d;
             margin-top: 30px;
             display: inline-block;
             position: relative;
@@ -514,7 +521,7 @@
         }
 
         .signature:hover {
-            color: #b76e79;
+            color: #4a6b4a;
             transform: scale(1.05);
         }
 
@@ -525,7 +532,7 @@
             top: 50%;
             width: 40px;
             height: 2px;
-            background: #e8c4b8;
+            background: #d1e8d1;
             transition: all 0.5s ease;
         }
 
@@ -540,7 +547,7 @@
         .signature:hover::before,
         .signature:hover::after {
             width: 60px;
-            background: #d4a5a5;
+            background: #a0c8a0;
         }
 
         /* Анимации */
@@ -592,8 +599,8 @@
         }
 
         @keyframes sealPulse {
-            0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 rgba(183, 110, 121, 0.4); }
-            100% { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 30px rgba(183, 110, 121, 0.6); }
+            0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 rgba(141, 185, 141, 0.4); }
+            100% { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 30px rgba(141, 185, 141, 0.6); }
         }
 
         @keyframes heartbeat {
@@ -604,32 +611,7 @@
             100% { transform: scale(1); }
         }
 
-        /* Адаптивность */
-        @media (max-width: 900px) {
-            .envelope-container {
-                height: 350px;
-            }
-
-            .invitation-title {
-                font-size: 3rem;
-            }
-
-            .names {
-                font-size: 3.8rem;
-            }
-
-            .photo-wrapper {
-                width: 250px;
-                height: 320px;
-            }
-
-            .seal {
-                width: 90px;
-                height: 90px;
-                font-size: 2.5rem;
-            }
-        }
-
+        /* Адаптивность для мобильных устройств */
         @media (max-width: 768px) {
             .envelope-container {
                 height: 300px;
@@ -637,41 +619,52 @@
 
             .invitation-title {
                 font-size: 2.8rem;
+                margin-bottom: 15px;
             }
 
             .names {
                 font-size: 3.2rem;
+                flex-direction: column;
+                gap: 0;
             }
 
             .open-text {
                 font-size: 1.6rem;
+                margin-top: 30px;
+            }
+
+            .invitation-container {
+                padding: 30px 15px;
+            }
+
+            .invitation-names {
+                font-size: 3.2rem;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .photos-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 60px;
             }
 
             .photo-wrapper {
                 width: 100%;
                 max-width: 280px;
                 height: 350px;
-            }
-
-            .photos-container {
-                gap: 40px;
+                margin-bottom: 70px;
             }
 
             .photo-wrapper:nth-child(2) .photo-frame {
                 margin-top: 0;
             }
 
-            .content {
-                padding: 30px 15px;
-            }
-
-            .invitation-text {
-                font-size: 1.3rem;
-                padding: 20px 0;
-            }
-
             .details-container {
-                gap: 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
             }
 
             .detail-card {
@@ -680,22 +673,42 @@
                 padding: 20px;
             }
 
-            .seal {
-                width: 80px;
-                height: 80px;
-                font-size: 2.2rem;
+            .ceremony-details {
+                margin: 30px 15px;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .signature {
+                font-size: 3rem;
+            }
+
+            .invitation-text {
+                font-size: 1.3rem;
+                padding: 20px 15px;
+                max-width: 100%;
+            }
+
+            .invitation-text::before,
+            .invitation-text::after {
+                display: none;
             }
         }
 
         @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
             .envelope-container {
                 height: 250px;
+                margin-bottom: 30px;
             }
 
             .seal {
-                width: 70px;
-                height: 70px;
-                font-size: 2rem;
+                width: 80px;
+                height: 80px;
+                font-size: 2.2rem;
             }
 
             .invitation-title {
@@ -703,19 +716,28 @@
             }
 
             .names {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
 
             .open-text {
                 font-size: 1.4rem;
             }
 
-            .signature {
-                font-size: 2.8rem;
+            .invitation-names {
+                font-size: 2.5rem;
+            }
+
+            .date {
+                font-size: 1.5rem;
+            }
+
+            .photo-label {
+                font-size: 1.6rem;
             }
 
             .invitation-text {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
+                margin-bottom: 30px;
             }
 
             .detail-title {
@@ -728,7 +750,16 @@
 
             .ceremony-details {
                 font-size: 1.1rem;
-                padding: 20px;
+                padding: 15px;
+                margin: 30px 10px;
+            }
+
+            .ceremony-text {
+                font-size: 1.1rem;
+            }
+
+            .signature {
+                font-size: 2.8rem;
             }
         }
     </style>
@@ -743,7 +774,11 @@
                     <i class="fas fa-heart"></i>
                 </div>
                 <div class="invitation-title">Приглашение на свадьбу</div>
-                <div class="names">Кирилл & Анна</div>
+                <div class="names">
+                    <span>Кирилл</span>
+                    <span>&</span>
+                    <span>Анна</span>
+                </div>
                 <div class="open-text">Нажмите на печать, чтобы открыть</div>
             </div>
             <div class="envelope envelope-back"></div>
@@ -753,7 +788,7 @@
         <div class="invitation-container" id="invitation">
             <div class="invitation-header">
                 <div class="invitation-names">
-                    КИРИЛЛ <span class="heart">+</span> АННА <span class="heart">=</span> <span class="heart">❤</span>
+                    КИРИЛЛ <span class="heart">&</span> АННА
                 </div>
                 <div class="date">21 сентября 2025 года</div>
             </div>
@@ -878,7 +913,7 @@
 
                         // Анимация после загрузки фото
                         setTimeout(() => {
-                            this.style.boxShadow = '0 30px 60px rgba(0, 0, 0, 0.3)';
+                            this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2)';
                         }, 300);
                     }
                 });
