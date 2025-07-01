@@ -77,6 +77,7 @@
         .envelope-back {
             background: #fff;
             transform: rotateX(180deg);
+            display: none; /* Скрываем обратную сторону */
         }
 
         .envelope-flap {
@@ -177,48 +178,51 @@
             display: block;
         }
 
-        /* Декоративные элементы */
-        .decoration {
+        /* Заголовок приглашения с сердечком */
+        .invitation-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .invitation-header::after {
+            content: "";
             position: absolute;
-            z-index: -1;
-            opacity: 0.1;
-            pointer-events: none;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(to right, #e8c4b8, #d4a5a5, #e8c4b8);
         }
 
-        .decoration-1 {
-            top: 5%;
-            left: 5%;
-            font-size: 12rem;
-            transform: rotate(-15deg);
-            color: #e8b4b8;
-            animation: float 8s infinite alternate;
+        .invitation-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            color: #b76e79;
+            margin: 15px 0;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 1s 1s forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .decoration-2 {
-            bottom: 10%;
-            right: 5%;
-            font-size: 10rem;
-            transform: rotate(25deg);
+        .invitation-names span.heart {
             color: #d4a5a5;
-            animation: float 10s infinite alternate-reverse;
+            margin: 0 15px;
+            animation: heartbeat 1.5s infinite;
         }
 
-        .decoration-3 {
-            top: 20%;
-            right: 15%;
-            font-size: 8rem;
-            transform: rotate(10deg);
-            color: #f3d7ca;
-            animation: spin 20s infinite linear;
-        }
-
-        .decoration-4 {
-            bottom: 30%;
-            left: 10%;
-            font-size: 6rem;
-            transform: rotate(-20deg);
-            color: #e8c4b8;
-            animation: float 12s infinite alternate;
+        .date {
+            font-size: 1.8rem;
+            color: #8a5a44;
+            font-weight: 400;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeIn 1s 1.3s forwards;
         }
 
         /* Секция с фотографиями */
@@ -227,7 +231,7 @@
             z-index: 10;
             padding: 0 20px;
             opacity: 0;
-            animation: fadeIn 1s 1s forwards;
+            animation: fadeIn 1s 1.5s forwards;
             margin-top: 20px;
         }
 
@@ -337,7 +341,7 @@
             position: relative;
             padding: 30px 0;
             opacity: 0;
-            animation: fadeInUp 1s 1.3s forwards;
+            animation: fadeInUp 1s 1.8s forwards;
         }
 
         .invitation-text::before,
@@ -370,7 +374,7 @@
             gap: 30px;
             margin: 40px 0;
             opacity: 0;
-            animation: fadeInUp 1s 1.6s forwards;
+            animation: fadeInUp 1s 2.1s forwards;
         }
 
         .detail-card {
@@ -387,9 +391,9 @@
             opacity: 0;
         }
 
-        .detail-card:nth-child(1) { animation: fadeInUp 0.8s 1.9s forwards; }
-        .detail-card:nth-child(2) { animation: fadeInUp 0.8s 2.1s forwards; }
-        .detail-card:nth-child(3) { animation: fadeInUp 0.8s 2.3s forwards; }
+        .detail-card:nth-child(1) { animation: fadeInUp 0.8s 2.4s forwards; }
+        .detail-card:nth-child(2) { animation: fadeInUp 0.8s 2.6s forwards; }
+        .detail-card:nth-child(3) { animation: fadeInUp 0.8s 2.8s forwards; }
 
         .detail-card:hover {
             transform: translateY(-10px);
@@ -446,8 +450,8 @@
             margin-top: 15px;
         }
 
-        /* Примечание о цветах */
-        .flower-note {
+        /* Детали церемонии */
+        .ceremony-details {
             background: linear-gradient(to right, rgba(232, 196, 184, 0.1), rgba(212, 165, 165, 0.1));
             border-left: 4px solid #d4a5a5;
             padding: 25px;
@@ -458,14 +462,14 @@
             color: #666;
             position: relative;
             overflow: hidden;
-            text-align: left;
+            text-align: center;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             transform: translateY(30px);
             opacity: 0;
-            animation: fadeInUp 1s 2.6s forwards;
+            animation: fadeInUp 1s 3.1s forwards;
         }
 
-        .flower-note::before {
+        .ceremony-details::before {
             content: "❤";
             position: absolute;
             top: 10px;
@@ -475,11 +479,17 @@
             animation: pulse 3s infinite;
         }
 
-        .note-title {
+        .ceremony-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
             color: #8a5a44;
             margin-bottom: 15px;
+        }
+
+        .ceremony-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-top: 15px;
         }
 
         /* Подпись */
@@ -488,7 +498,7 @@
             padding: 20px;
             transform: translateY(30px);
             opacity: 0;
-            animation: fadeInUp 1s 2.9s forwards;
+            animation: fadeInUp 1s 3.4s forwards;
         }
 
         .signature {
@@ -584,6 +594,14 @@
         @keyframes sealPulse {
             0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 rgba(183, 110, 121, 0.4); }
             100% { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 30px rgba(183, 110, 121, 0.6); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
 
         /* Адаптивность */
@@ -708,7 +726,7 @@
                 font-size: 1.1rem;
             }
 
-            .flower-note {
+            .ceremony-details {
                 font-size: 1.1rem;
                 padding: 20px;
             }
@@ -717,20 +735,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Декоративные элементы -->
-        <div class="decoration decoration-1">
-            <i class="fas fa-heart"></i>
-        </div>
-        <div class="decoration decoration-2">
-            <i class="fas fa-ring"></i>
-        </div>
-        <div class="decoration decoration-3">
-            <i class="fas fa-star"></i>
-        </div>
-        <div class="decoration decoration-4">
-            <i class="fas fa-dove"></i>
-        </div>
-
         <!-- Конверт с текстом на лицевой стороне -->
         <div class="envelope-container" id="envelope">
             <div class="envelope envelope-front">
@@ -747,6 +751,13 @@
 
         <!-- Приглашение -->
         <div class="invitation-container" id="invitation">
+            <div class="invitation-header">
+                <div class="invitation-names">
+                    КИРИЛЛ <span class="heart">+</span> АННА <span class="heart">=</span> <span class="heart">❤</span>
+                </div>
+                <div class="date">21 сентября 2025 года</div>
+            </div>
+
             <div class="photos-section">
                 <div class="photos-container">
                     <div class="photo-wrapper">
@@ -797,16 +808,20 @@
 
                     <div class="detail-card">
                         <div class="detail-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-glass-cheers"></i>
                         </div>
-                        <h3 class="detail-title">Место</h3>
-                        <p class="detail-info">Банкетный зал<br>"Нева Холл"</p>
+                        <h3 class="detail-title">Мероприятие</h3>
+                        <p class="detail-info">Церемония и банкет</p>
                     </div>
                 </div>
 
-                <div class="flower-note">
-                    <h3 class="note-title">Особое пожелание</h3>
-                    <p>Дорогие гости! Мы будем очень рады видеть вас на нашем торжестве. Вместо цветов мы будем признательны за ваши теплые пожелания в открытке, так как сразу после свадьбы мы отправляемся в свадебное путешествие.</p>
+                <div class="ceremony-details">
+                    <h3 class="ceremony-title">Детали мероприятия</h3>
+                    <p class="ceremony-text">
+                        21 сентября 2025 года ждём вас по адресу <strong>Фурштатская ул., 52</strong> на церемонии бракосочетания.
+                        После росписи проследуем в банкетный зал <strong>"Нева Холл"</strong> по адресу <strong>Сапёрный пер., 5</strong>.
+                        Прогулка займёт около 15 минут пешком через живописный парк.
+                    </p>
                 </div>
 
                 <div class="signature-section">
@@ -841,17 +856,6 @@
                 setTimeout(() => {
                     invitation.classList.add('show');
                     document.body.style.overflow = 'auto';
-
-                    // Параллакс эффект для декоративных элементов
-                    document.addEventListener('mousemove', (e) => {
-                        const x = (window.innerWidth - e.pageX * 3) / 100;
-                        const y = (window.innerHeight - e.pageY * 3) / 100;
-
-                        document.querySelector('.decoration-1').style.transform = `translate(${x/3}px, ${y/3}px) rotate(-15deg)`;
-                        document.querySelector('.decoration-2').style.transform = `translate(${-x/4}px, ${-y/4}px) rotate(25deg)`;
-                        document.querySelector('.decoration-3').style.transform = `translate(${x/5}px, ${y/5}px) rotate(${x/2}deg)`;
-                        document.querySelector('.decoration-4').style.transform = `translate(${-x/6}px, ${-y/6}px) rotate(-20deg)`;
-                    });
                 }, 1000);
             }
 
