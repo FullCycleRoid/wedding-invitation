@@ -556,28 +556,39 @@
                 gap: 5px;
             }
             .photos-container {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
-                gap: 60px;
+                gap: 20px;
+                justify-content: center;
             }
             .photo-wrapper {
-                width: 100%;
-                max-width: 280px;
-                height: 350px;
-                margin-bottom: 70px;
+                width: 45%;
+                max-width: 140px;
+                height: 180px;
+                margin-bottom: 40px;
             }
             .photo-wrapper:nth-child(2) .photo-frame {
                 margin-top: 0;
             }
             .details-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 25px;
+                flex-direction: row;
+                align-items: stretch;
+                gap: 10px;
+                justify-content: center;
             }
             .detail-card {
-                width: 100%;
-                max-width: 280px;
-                padding: 20px;
+                width: 30%;
+                max-width: 120px;
+                padding: 15px 8px;
+                min-width: 80px;
+            }
+            .detail-title {
+                font-size: 1.2rem;
+                margin-bottom: 8px;
+            }
+            .detail-info {
+                font-size: 1rem;
+                margin-top: 8px;
             }
             .ceremony-details {
                 margin: 30px 15px;
@@ -604,18 +615,39 @@
             .invitation-names {
                 font-size: 2.5rem;
             }
+            .photos-container {
+                gap: 15px;
+            }
+            .photo-wrapper {
+                width: 48%;
+                max-width: 120px;
+                height: 150px;
+                margin-bottom: 35px;
+            }
             .photo-label {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
+                padding: 6px 15px;
+            }
+            .details-container {
+                gap: 8px;
+            }
+            .detail-card {
+                width: 32%;
+                max-width: 100px;
+                padding: 12px 5px;
+                min-width: 70px;
+            }
+            .detail-title {
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+            .detail-info {
+                font-size: 0.9rem;
+                margin-top: 6px;
             }
             .invitation-text {
                 font-size: 1.2rem;
                 margin-bottom: 30px;
-            }
-            .detail-title {
-                font-size: 1.6rem;
-            }
-            .detail-info {
-                font-size: 1.1rem;
             }
             .ceremony-details {
                 font-size: 1.1rem;
