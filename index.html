@@ -42,9 +42,10 @@
             transition: all 0.7s cubic-bezier(0.4,0,0.2,1);
         }
         .container.invitation-open {
-            align-items: stretch;
+            align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
+            padding: 20px;
         }
 
         /* Конверт */
@@ -187,7 +188,7 @@
             animation: scaleUp 1s 0.5s forwards;
             backdrop-filter: blur(5px);
             padding: 40px 20px;
-            margin: 20px;
+            margin: 20px auto;
             border: 1px solid #e0f0e0;
         }
         .invitation-container.show {
@@ -219,7 +220,7 @@
             letter-spacing: 2px;
             position: relative;
             display: inline-block;
-            opacity: 0;
+            opacity: 1;
             animation: fadeIn 1s 1s forwards;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
@@ -233,14 +234,14 @@
             color: #5a7a5a;
             font-weight: 400;
             letter-spacing: 1px;
-            opacity: 0;
+            opacity: 1;
             animation: fadeIn 1s 1.3s forwards;
         }
         .photos-section {
             position: relative;
             z-index: 10;
             padding: 0 10px;
-            opacity: 0;
+            opacity: 1;
             animation: fadeIn 1s 1.5s forwards;
             margin-top: 20px;
         }
@@ -339,7 +340,7 @@
             color: #5a7a5a;
             position: relative;
             padding: 30px 0;
-            opacity: 0;
+            opacity: 1;
             animation: fadeInUp 1s 1.8s forwards;
         }
         .invitation-text::before,
@@ -367,7 +368,7 @@
             flex-wrap: wrap;
             gap: 30px;
             margin: 40px 0;
-            opacity: 0;
+            opacity: 1;
             animation: fadeInUp 1s 2.1s forwards;
         }
         .detail-card {
@@ -381,7 +382,7 @@
             overflow: hidden;
             border-top: 4px solid #d1e8d1;
             transform: translateY(30px);
-            opacity: 0;
+            opacity: 1;
         }
         .detail-card:nth-child(1) { animation: fadeInUp 0.8s 2.4s forwards; }
         .detail-card:nth-child(2) { animation: fadeInUp 0.8s 2.6s forwards; }
@@ -448,7 +449,7 @@
             text-align: center;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
             transform: translateY(30px);
-            opacity: 0;
+            opacity: 1;
             animation: fadeInUp 1s 3.1s forwards;
         }
         .ceremony-details::before {
@@ -475,7 +476,7 @@
             margin: 50px 0 30px;
             padding: 20px;
             transform: translateY(30px);
-            opacity: 0;
+            opacity: 1;
             animation: fadeInUp 1s 3.4s forwards;
         }
         .signature {
@@ -515,8 +516,38 @@
             background: #a0c8a0;
         }
         @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+            .container {
+                padding: 0;
+            }
+            .container.invitation-open {
+                padding: 10px;
+            }
+            .envelope-container {
+                max-width: 98vw;
+                height: 320px;
+            }
+            .envelope-front {
+                padding: 0 4vw;
+            }
+            .seal {
+                width: 60px;
+                height: 60px;
+                font-size: 1.7rem;
+                top: 38%;
+            }
+            .envelope-content {
+                top: 58%;
+            }
+            .names {
+                font-size: 1.3em;
+            }
             .invitation-container {
+                max-width: 99vw;
                 padding: 30px 15px;
+                margin: 10px auto;
             }
             .invitation-names {
                 font-size: 3.2rem;
@@ -639,7 +670,7 @@
         <div class="invitation-container" id="invitation">
             <div class="invitation-header">
                 <div class="invitation-names">
-                    КИРИЛЛ <span class="heart">&</span> АННА
+                    КИРИЛЛ <span class="heart">&amp;</span> АННА
                 </div>
                 <div class="date">21 сентября 2025 года</div>
             </div>
@@ -733,9 +764,33 @@
                 }, 900);
             }
 
-            if (seal) {
-                seal.addEventListener('click', openEnvelope);
-            }
+            // Открытие конверта при клике на весь конверт
+            envelope.addEventListener('click', openEnvelope);
+
+            // Загрузка фотографий
+            const photoFrames = document.querySelectorAll('.photo-frame');
+
+            photoFrames.forEach(frame => {
+                frame.addEventListener('click', function() {
+                    const placeholder = this.querySelector('.photo-placeholder');
+                    if (placeholder) {
+                        // В реальном проекте замените ссылки на свои фотографии
+                        const groomImg = '<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=280&h=350&q=80" alt="Детская фотография Кирилла">';
+                        const brideImg = '<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=280&h=350&q=80" alt="Детская фотография Анны">';
+
+                        if (this.closest('.photo-wrapper').querySelector('.photo-label').textContent === 'Жених') {
+                            placeholder.innerHTML = groomImg;
+                        } else {
+                            placeholder.innerHTML = brideImg;
+                        }
+
+                        // Анимация после загрузки фото
+                        setTimeout(() => {
+                            this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2)';
+                        }, 300);
+                    }
+                });
+            });
         });
     </script>
 </body>
