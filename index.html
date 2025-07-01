@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу Кирилла и Анны</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fdf0e9, #fff5f0);
+            color: #5a4a42;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            perspective: 1000px;
+        }
+        
+        .container {
+            max-width: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        /* Конверт */
+        .envelope-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+            margin-bottom: 40px;
+        }
+        
+        .envelope-container.open {
+            transform: translateY(-100px) rotateX(180deg) scale(0.8);
+        }
+        
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .envelope-front {
+            background: linear-gradient(135deg, #ffd1dc, #f8c8dc);
+            transform: translateZ(1px);
+        }
+        
+        .envelope-back {
+            background: #fff;
+            transform: rotateX(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(135deg, #dda0dd, #c9a0dc);
+            transform-origin: top;
+            transform: rotateX(0deg);
+            transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 10px 10px 0 0;
+            z-index: 2;
+        }
+        
+        .envelope-container.open .envelope-flap {
+            transform: rotateX(180deg);
+        }
+        
+        .seal {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #b76e79, #d4a5a5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 3;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            animation: sealPulse 2s infinite alternate;
+        }
+        
+        .envelope-container.open .seal {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+        }
+        
+        .invitation-title {
+            font-family: 'Parisienne', cursive;
+            font-size: 4rem;
+            color: #b76e79;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            color: #8a5a44;
+            margin: 10px 0;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .open-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #8a5a44;
+            margin-top: 40px;
+            animation: pulse 2s infinite;
+            font-weight: 500;
+        }
+        
+        /* Приглашение */
+        .invitation-container {
+            display: none;
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: scaleUp 1s 0.5s forwards;
+            backdrop-filter: blur(5px);
+            padding: 40px;
+            margin: 20px;
+        }
+        
+        .invitation-container.show {
+            display: block;
+        }
+        
+        /* Декоративные элементы */
+        .decoration {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        .decoration-1 {
+            top: 5%;
+            left: 5%;
+            font-size: 12rem;
+            transform: rotate(-15deg);
+            color: #e8b4b8;
+            animation: float 8s infinite alternate;
+        }
+        
+        .decoration-2 {
+            bottom: 10%;
+            right: 5%;
+            font-size: 10rem;
+            transform: rotate(25deg);
+            color: #d4a5a5;
+            animation: float 10s infinite alternate-reverse;
+        }
+        
+        .decoration-3 {
+            top: 20%;
+            right: 15%;
+            font-size: 8rem;
+            transform: rotate(10deg);
+            color: #f3d7ca;
+            animation: spin 20s infinite linear;
+        }
+        
+        .decoration-4 {
+            bottom: 30%;
+            left: 10%;
+            font-size: 6rem;
+            transform: rotate(-20deg);
+            color: #e8c4b8;
+            animation: float 12s infinite alternate;
+        }
+        
+        /* Заголовок приглашения */
+        .invitation-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            position: relative;
+        }
+        
+        .invitation-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(to right, #e8c4b8, #d4a5a5, #e8c4b8);
+        }
+        
+        .invitation-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            color: #b76e79;
+            margin: 15px 0;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 1s 1s forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .date {
+            font-size: 1.8rem;
+            color: #8a5a44;
+            font-weight: 400;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeIn 1s 1.3s forwards;
+        }
+        
+        /* Секция с фотографиями */
+        .photos-section {
+            position: relative;
+            z-index: 10;
+            padding: 0 20px;
+            opacity: 0;
+            animation: fadeIn 1s 1.5s forwards;
+        }
+        
+        .photos-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            perspective: 1000px;
+        }
+        
+        .photo-wrapper {
+            position: relative;
+            width: 280px;
+            height: 350px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+        
+        .photo-wrapper:hover {
+            transform: translateY(-15px) rotateY(5deg);
+        }
+        
+        .photo-wrapper:nth-child(2):hover {
+            transform: translateY(-15px) rotateY(-5deg);
+        }
+        
+        .photo-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            position: relative;
+            transform: rotate(-5deg);
+            transition: all 0.5s ease;
+            background: linear-gradient(45deg, #f8f0e5, #f5e7d9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4a5a5;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+        
+        .photo-wrapper:nth-child(2) .photo-frame {
+            transform: rotate(5deg);
+            margin-top: 30px;
+        }
+        
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .photo-frame:hover img {
+            transform: scale(1.1);
+        }
+        
+        .photo-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #b76e79;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+            transition: all 0.4s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .photo-wrapper:hover .photo-label {
+            background: #b76e79;
+            color: white;
+            transform: translateX(-50%) translateY(-10px);
+            box-shadow: 0 10px 25px rgba(183, 110, 121, 0.4);
+        }
+        
+        /* Основное содержимое */
+        .content {
+            padding: 40px 20px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .invitation-text {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            color: #555;
+            position: relative;
+            padding: 30px 0;
+            opacity: 0;
+            animation: fadeInUp 1s 1.8s forwards;
+        }
+        
+        .invitation-text::before,
+        .invitation-text::after {
+            content: """;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6rem;
+            position: absolute;
+            color: rgba(232, 196, 184, 0.3);
+            line-height: 1;
+            opacity: 0.5;
+        }
+        
+        .invitation-text::before {
+            top: -10px;
+            left: -30px;
+        }
+        
+        .invitation-text::after {
+            bottom: -60px;
+            right: -30px;
+            transform: rotate(180deg);
+        }
+        
+        /* Детали мероприятия */
+        .details-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+            opacity: 0;
+            animation: fadeInUp 1s 2.1s forwards;
+        }
+        
+        .detail-card {
+            background: #f9f4f0;
+            border-radius: 15px;
+            padding: 25px;
+            width: 250px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid #e8c4b8;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        
+        .detail-card:nth-child(1) { animation: fadeInUp 0.8s 2.4s forwards; }
+        .detail-card:nth-child(2) { animation: fadeInUp 0.8s 2.6s forwards; }
+        .detail-card:nth-child(3) { animation: fadeInUp 0.8s 2.8s forwards; }
+        
+        .detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .detail-card::before {
+            content: "";
+            position: absolute;
+            top: -4px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #e8c4b8, #d4a5a5, #e8c4b8);
+            animation: borderFlow 8s linear infinite;
+        }
+        
+        .detail-icon {
+            font-size: 2.5rem;
+            color: #d4a5a5;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease, color 0.5s ease;
+        }
+        
+        .detail-card:hover .detail-icon {
+            transform: scale(1.2);
+            color: #b76e79;
+        }
+        
+        .detail-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #8a5a44;
+            margin-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .detail-title::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: #e8c4b8;
+        }
+        
+        .detail-info {
+            font-size: 1.3rem;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+        
+        /* Примечание о цветах */
+        .flower-note {
+            background: linear-gradient(to right, rgba(232, 196, 184, 0.1), rgba(212, 165, 165, 0.1));
+            border-left: 4px solid #d4a5a5;
+            padding: 25px;
+            margin: 40px auto;
+            max-width: 700px;
+            border-radius: 0 15px 15px 0;
+            font-size: 1.2rem;
+            color: #666;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeInUp 1s 3.1s forwards;
+        }
+        
+        .flower-note::before {
+            content: "❤";
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 3rem;
+            color: rgba(212, 165, 165, 0.15);
+            animation: pulse 3s infinite;
+        }
+        
+        .note-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #8a5a44;
+            margin-bottom: 15px;
+        }
+        
+        /* Подпись */
+        .signature-section {
+            margin: 50px 0 30px;
+            padding: 20px;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeInUp 1s 3.4s forwards;
+        }
+        
+        .signature {
+            font-family: 'Parisienne', cursive;
+            font-size: 3.5rem;
+            color: #d4a5a5;
+            margin-top: 30px;
+            display: inline-block;
+            position: relative;
+            padding: 0 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+        
+        .signature:hover {
+            color: #b76e79;
+            transform: scale(1.05);
+        }
+        
+        .signature::before,
+        .signature::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 2px;
+            background: #e8c4b8;
+            transition: all 0.5s ease;
+        }
+        
+        .signature::before {
+            left: 0;
+        }
+        
+        .signature::after {
+            right: 0;
+        }
+        
+        .signature:hover::before,
+        .signature:hover::after {
+            width: 60px;
+            background: #d4a5a5;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes borderFlow {
+            0% { background-position: 0 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(-15deg); }
+            100% { transform: translateY(-20px) rotate(-10deg); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        
+        @keyframes scaleUp {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes sealPulse {
+            0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 rgba(183, 110, 121, 0.4); }
+            100% { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 30px rgba(183, 110, 121, 0.6); }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .envelope-container {
+                height: 350px;
+            }
+            
+            .invitation-names {
+                font-size: 4rem;
+            }
+            
+            .date {
+                font-size: 1.6rem;
+            }
+            
+            .photo-wrapper {
+                width: 250px;
+                height: 320px;
+            }
+            
+            .seal {
+                width: 90px;
+                height: 90px;
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .envelope-container {
+                height: 300px;
+            }
+            
+            .invitation-title {
+                font-size: 3.5rem;
+            }
+            
+            .open-text {
+                font-size: 1.8rem;
+            }
+            
+            .invitation-names {
+                font-size: 3.5rem;
+            }
+            
+            .date {
+                font-size: 1.4rem;
+            }
+            
+            .photo-wrapper {
+                width: 100%;
+                max-width: 280px;
+                height: 350px;
+            }
+            
+            .photos-container {
+                gap: 40px;
+            }
+            
+            .photo-wrapper:nth-child(2) .photo-frame {
+                margin-top: 0;
+            }
+            
+            .content {
+                padding: 30px 15px;
+            }
+            
+            .invitation-text {
+                font-size: 1.3rem;
+                padding: 20px 0;
+            }
+            
+            .details-container {
+                gap: 20px;
+            }
+            
+            .detail-card {
+                width: 100%;
+                max-width: 280px;
+                padding: 20px;
+            }
+            
+            .seal {
+                width: 80px;
+                height: 80px;
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .envelope-container {
+                height: 250px;
+            }
+            
+            .seal {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            
+            .invitation-title {
+                font-size: 3rem;
+            }
+            
+            .names {
+                font-size: 4rem;
+            }
+            
+            .invitation-names {
+                font-size: 3rem;
+            }
+            
+            .date {
+                font-size: 1.2rem;
+            }
+            
+            .signature {
+                font-size: 2.8rem;
+            }
+            
+            .invitation-text {
+                font-size: 1.1rem;
+            }
+            
+            .detail-title {
+                font-size: 1.6rem;
+            }
+            
+            .detail-info {
+                font-size: 1.1rem;
+            }
+            
+            .flower-note {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Декоративные элементы -->
+        <div class="decoration decoration-1">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="decoration decoration-2">
+            <i class="fas fa-ring"></i>
+        </div>
+        <div class="decoration decoration-3">
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="decoration decoration-4">
+            <i class="fas fa-dove"></i>
+        </div>
+        
+        <!-- Конверт -->
+        <div class="envelope-container" id="envelope">
+            <div class="envelope envelope-front">
+                <div class="envelope-flap"></div>
+                <div class="seal">
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+            <div class="envelope envelope-back">
+                <div class="invitation-title">Приглашение на свадьбу</div>
+                <div class="names">Кирилл & Анна</div>
+                <div class="open-text">Нажмите, чтобы открыть</div>
+            </div>
+        </div>
+        
+        <!-- Приглашение -->
+        <div class="invitation-container" id="invitation">
+            <div class="invitation-header">
+                <div class="invitation-names">Кирилл & Анна</div>
+                <div class="date">21 сентября 2025 года в 16:00</div>
+            </div>
+            
+            <div class="photos-section">
+                <div class="photos-container">
+                    <div class="photo-wrapper">
+                        <div class="photo-frame">
+                            <div class="photo-placeholder">
+                                <i class="fas fa-camera fa-3x" style="opacity:0.3; margin-bottom:15px;"></i><br>
+                                Детская фотография Кирилла
+                            </div>
+                        </div>
+                        <div class="photo-label">Жених</div>
+                    </div>
+                    
+                    <div class="photo-wrapper">
+                        <div class="photo-frame">
+                            <div class="photo-placeholder">
+                                <i class="fas fa-camera fa-3x" style="opacity:0.3; margin-bottom:15px;"></i><br>
+                                Детская фотография Анны
+                            </div>
+                        </div>
+                        <div class="photo-label">Невеста</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="invitation-text">
+                    Дорогие друзья и родные!<br>
+                    С огромной радостью приглашаем вас разделить с нами самый важный день в нашей жизни - 
+                    день нашего бракосочетания. Ваше присутствие сделает этот день по-настоящему особенным и незабываемым.
+                </div>
+                
+                <div class="details-container">
+                    <div class="detail-card">
+                        <div class="detail-icon">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="detail-title">Дата</h3>
+                        <p class="detail-info">21 сентября 2025 года</p>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <div class="detail-icon">
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <h3 class="detail-title">Время</h3>
+                        <p class="detail-info">16:00</p>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <div class="detail-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="detail-title">Место</h3>
+                        <p class="detail-info">Банкетный зал<br>"Нева Холл"</p>
+                    </div>
+                </div>
+                
+                <div class="flower-note">
+                    <h3 class="note-title">Особое пожелание</h3>
+                    <p>Дорогие гости! Мы будем очень рады видеть вас на нашем торжестве. Вместо цветов мы будем признательны за ваши теплые пожелания в открытке, так как сразу после свадьбы мы отправляемся в свадебное путешествие.</p>
+                </div>
+                
+                <div class="signature-section">
+                    <p class="invitation-text">С нетерпением ждем встречи с вами на нашем празднике!</p>
+                    <div class="signature">Кирилл и Анна</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const envelope = document.getElementById('envelope');
+            const invitation = document.getElementById('invitation');
+            
+            // Открытие конверта
+            envelope.addEventListener('click', function() {
+                this.classList.add('open');
+                
+                // Показ приглашения после анимации
+                setTimeout(() => {
+                    invitation.classList.add('show');
+                    document.body.style.overflow = 'auto';
+                    
+                    // Параллакс эффект для декоративных элементов
+                    document.addEventListener('mousemove', (e) => {
+                        const x = (window.innerWidth - e.pageX * 3) / 100;
+                        const y = (window.innerHeight - e.pageY * 3) / 100;
+                        
+                        document.querySelector('.decoration-1').style.transform = `translate(${x/3}px, ${y/3}px) rotate(-15deg)`;
+                        document.querySelector('.decoration-2').style.transform = `translate(${-x/4}px, ${-y/4}px) rotate(25deg)`;
+                        document.querySelector('.decoration-3').style.transform = `translate(${x/5}px, ${y/5}px) rotate(${x/2}deg)`;
+                        document.querySelector('.decoration-4').style.transform = `translate(${-x/6}px, ${-y/6}px) rotate(-20deg)`;
+                    });
+                }, 1000);
+            });
+            
+            // Загрузка фотографий
+            const photoFrames = document.querySelectorAll('.photo-frame');
+            
+            photoFrames.forEach(frame => {
+                frame.addEventListener('click', function() {
+                    const placeholder = this.querySelector('.photo-placeholder');
+                    if (placeholder) {
+                        // В реальном проекте замените ссылки на свои фотографии
+                        const groomImg = '<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=280&h=350&q=80" alt="Детская фотография Кирилла">';
+                        const brideImg = '<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=280&h=350&q=80" alt="Детская фотография Анны">';
+                        
+                        if (this.closest('.photo-wrapper').querySelector('.photo-label').textContent === 'Жених') {
+                            placeholder.innerHTML = groomImg;
+                        } else {
+                            placeholder.innerHTML = brideImg;
+                        }
+                        
+                        // Анимация после загрузки фото
+                        setTimeout(() => {
+                            this.style.boxShadow = '0 30px 60px rgba(0, 0, 0, 0.3)';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
