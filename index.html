@@ -363,6 +363,7 @@
             gap: 20px;
             max-width: 600px;
             margin: 0 auto;
+            flex-wrap: wrap;
         }
         .timer-item {
             background: #f8fbf8;
@@ -829,7 +830,7 @@
             100% { transform: scale(1); }
         }
 
-        /* Медиа-запросы для адаптации */
+        /* Улучшенные медиа-запросы для адаптации под iPhone */
         @media (max-width: 768px) {
             body {
                 padding: 0;
@@ -884,37 +885,84 @@
                 right: -35px;
             }
             .couple-photos {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 20px;
+                flex-direction: row !important;
+                flex-wrap: nowrap;
+                justify-content: center;
+                gap: 15px;
             }
+            
             .couple-photo {
-                width: calc(50% - 10px);
+                width: 45% !important;
+                max-width: 180px;
                 height: 220px;
+                margin: 0;
             }
+            
             .countdown-timer {
-                flex-wrap: wrap;
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+                width: 100%;
             }
+            
             .timer-item {
-                min-width: calc(50% - 10px);
-                padding: 15px 10px;
+                min-width: auto !important;
+                width: 100%;
+                padding: 12px 5px !important;
             }
+            
             .timer-value {
-                font-size: 2.8rem;
+                font-size: 1.8rem !important;
             }
+            
+            .timer-label {
+                font-size: 0.8rem !important;
+            }
+            
+            .timing-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
             .timing-item {
-                min-width: calc(100% - 20px);
+                min-width: auto !important;
+                padding: 20px 15px !important;
             }
+            
+            .timing-photos {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
             .timing-photo {
-                min-width: calc(50% - 10px);
+                min-width: auto !important;
+                height: 150px;
             }
+            
+            .gift-dress-section {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
             .gift-card, .dress-card {
-                min-width: calc(100% - 20px);
+                min-width: auto !important;
+                padding: 20px 15px !important;
             }
+            
+            .gift-title, .dress-title {
+                font-size: 1.6rem !important;
+            }
+            
+            .gift-text, .dress-text {
+                font-size: 1.2rem !important;
+            }
+            
             .invitation-text {
-                font-size: 1.3rem;
-                padding: 20px 15px;
-                max-width: 100%;
+                font-size: 1.3rem !important;
+                padding: 20px 10px !important;
             }
             .invitation-text::before,
             .invitation-text::after {
@@ -938,41 +986,84 @@
                 right: -25px;
             }
             .couple-photo {
-                width: 100%;
-                max-width: 280px;
-                height: 250px;
+                width: 48% !important;
+                max-width: 150px;
+                height: 200px;
             }
+            
             .countdown-timer {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+            }
+            
+            .timer-item {
+                padding: 10px 4px !important;
+            }
+            
+            .timer-value {
+                font-size: 1.5rem !important;
+            }
+            
+            .timer-label {
+                font-size: 0.7rem !important;
+            }
+            
+            .timing-grid {
                 gap: 10px;
             }
-            .timer-item {
-                min-width: calc(50% - 5px);
-                padding: 12px 8px;
-            }
-            .timer-value {
-                font-size: 2.2rem;
-            }
-            .timer-label {
-                font-size: 0.9rem;
-            }
+            
             .timing-item {
-                min-width: calc(100% - 10px);
+                padding: 15px 10px !important;
             }
+            
+            .timing-time {
+                font-size: 1.4rem !important;
+            }
+            
+            .timing-event {
+                font-size: 1.2rem !important;
+            }
+            
+            .timing-address {
+                font-size: 1.1rem !important;
+            }
+            
+            .timing-photos {
+                gap: 10px;
+            }
+            
             .timing-photo {
-                min-width: calc(100% - 10px);
+                height: 120px;
             }
+            
+            .gift-dress-section {
+                gap: 10px;
+            }
+            
             .gift-card, .dress-card {
-                min-width: calc(100% - 10px);
+                padding: 15px 10px !important;
             }
+            
+            .gift-title, .dress-title {
+                font-size: 1.4rem !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .gift-text, .dress-text {
+                font-size: 1.1rem !important;
+                margin-top: 10px !important;
+            }
+            
             .invitation-text {
                 font-size: 1.2rem;
                 margin-bottom: 30px;
             }
             .host-section {
-                padding: 25px 15px;
+                padding: 25px 15px !important;
             }
             .host-contact a {
-                font-size: 1.5rem;
+                font-size: 1.3rem !important;
+                padding: 8px 15px !important;
             }
             .signature {
                 font-size: 2.8rem;
@@ -980,59 +1071,38 @@
         }
         @media (max-width: 350px) {
             .couple-photo {
-                height: 200px;
+                max-width: 140px;
+                height: 180px;
             }
+            
+            .countdown-timer {
+                gap: 5px;
+            }
+            
             .timer-item {
-                min-width: calc(50% - 5px);
-                padding: 8px 5px;
+                padding: 8px 2px !important;
             }
+            
             .timer-value {
-                font-size: 1.8rem;
+                font-size: 1.3rem !important;
+            }
+            
+            .timing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timing-photos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gift-dress-section {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Специальные адаптации для iPhone */
-        @media (max-width: 768px) and (orientation: portrait) {
-            .couple-photos {
-                flex-direction: row;
-                justify-content: space-around;
-            }
-            .timing-grid {
-                flex-direction: column;
-            }
-            .timing-photos {
-                flex-direction: column;
-            }
-            .gift-dress-section {
-                flex-direction: column;
-            }
-        }
-        @media (max-width: 768px) and (orientation: landscape) {
-            .couple-photos {
-                flex-direction: row;
-            }
-            .timing-grid {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            .timing-item {
-                min-width: calc(50% - 15px);
-            }
-            .timing-photos {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            .timing-photo {
-                min-width: calc(50% - 10px);
-            }
-            .gift-dress-section {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            .gift-card, .dress-card {
-                min-width: calc(50% - 15px);
-            }
-        }
+
+
+
     </style>
 </head>
 <body>
@@ -1299,5 +1369,6 @@
             updateCountdown();
         });
     </script>
+
 </body>
 </html>
