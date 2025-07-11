@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Основные стили */
         * {
             margin: 0;
             padding: 0;
@@ -238,7 +239,7 @@
             margin-top: 10px;
         }
 
-        /* Новые блоки: Фото пары */
+        /* Фото пары */
         .couple-section {
             text-align: center;
             margin: 30px 0;
@@ -548,8 +549,8 @@
             background: linear-gradient(to right, #d1e8d1, #a0c8a0, #d1e8d1);
         }
         .timing-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
             gap: 30px;
             margin-top: 20px;
         }
@@ -558,6 +559,8 @@
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 300px;
         }
         .timing-time {
             font-size: 1.8rem;
@@ -587,12 +590,14 @@
             line-height: 1.6;
         }
         .timing-photos {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
             gap: 20px;
             margin-top: 30px;
         }
         .timing-photo {
+            flex: 1;
+            min-width: 200px;
             height: 180px;
             border-radius: 10px;
             overflow: hidden;
@@ -617,8 +622,8 @@
 
         /* Подарки и дресс-код */
         .gift-dress-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
             gap: 30px;
             max-width: 800px;
             margin: 50px auto;
@@ -635,6 +640,8 @@
             overflow: hidden;
             border-top: 4px solid #d1e8d1;
             transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex: 1;
+            min-width: 300px;
         }
         .gift-card:hover, .dress-card:hover {
             transform: translateY(-10px);
@@ -822,7 +829,7 @@
             100% { transform: scale(1); }
         }
 
-        /* Медиа-запросы */
+        /* Медиа-запросы для адаптации */
         @media (max-width: 768px) {
             body {
                 padding: 0;
@@ -877,32 +884,32 @@
                 right: -35px;
             }
             .couple-photos {
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 20px;
             }
             .couple-photo {
-                width: 220px;
-                height: 270px;
+                width: calc(50% - 10px);
+                height: 220px;
             }
             .countdown-timer {
                 flex-wrap: wrap;
             }
             .timer-item {
-                min-width: 80px;
+                min-width: calc(50% - 10px);
                 padding: 15px 10px;
             }
             .timer-value {
                 font-size: 2.8rem;
             }
-            .timing-grid {
-                grid-template-columns: 1fr;
+            .timing-item {
+                min-width: calc(100% - 20px);
             }
-            .timing-photos {
-                grid-template-columns: 1fr;
+            .timing-photo {
+                min-width: calc(50% - 10px);
             }
-            .gift-dress-section {
-                grid-template-columns: 1fr;
+            .gift-card, .dress-card {
+                min-width: calc(100% - 20px);
             }
             .invitation-text {
                 font-size: 1.3rem;
@@ -930,11 +937,16 @@
             .couple-title::after {
                 right: -25px;
             }
+            .couple-photo {
+                width: 100%;
+                max-width: 280px;
+                height: 250px;
+            }
             .countdown-timer {
                 gap: 10px;
             }
             .timer-item {
-                min-width: 70px;
+                min-width: calc(50% - 5px);
                 padding: 12px 8px;
             }
             .timer-value {
@@ -942,6 +954,15 @@
             }
             .timer-label {
                 font-size: 0.9rem;
+            }
+            .timing-item {
+                min-width: calc(100% - 10px);
+            }
+            .timing-photo {
+                min-width: calc(100% - 10px);
+            }
+            .gift-card, .dress-card {
+                min-width: calc(100% - 10px);
             }
             .invitation-text {
                 font-size: 1.2rem;
@@ -955,6 +976,61 @@
             }
             .signature {
                 font-size: 2.8rem;
+            }
+        }
+        @media (max-width: 350px) {
+            .couple-photo {
+                height: 200px;
+            }
+            .timer-item {
+                min-width: calc(50% - 5px);
+                padding: 8px 5px;
+            }
+            .timer-value {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Специальные адаптации для iPhone */
+        @media (max-width: 768px) and (orientation: portrait) {
+            .couple-photos {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            .timing-grid {
+                flex-direction: column;
+            }
+            .timing-photos {
+                flex-direction: column;
+            }
+            .gift-dress-section {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 768px) and (orientation: landscape) {
+            .couple-photos {
+                flex-direction: row;
+            }
+            .timing-grid {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .timing-item {
+                min-width: calc(50% - 15px);
+            }
+            .timing-photos {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .timing-photo {
+                min-width: calc(50% - 10px);
+            }
+            .gift-dress-section {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .gift-card, .dress-card {
+                min-width: calc(50% - 15px);
             }
         }
     </style>
@@ -1224,5 +1300,4 @@
         });
     </script>
 </body>
-
 </html>
