@@ -366,14 +366,14 @@
             flex-wrap: wrap;
         }
         .timer-item {
-            background: #f8fbf8;
+            background: linear-gradient(135deg, #f8fbf8, #f0f8f0);
             border-radius: 15px;
             padding: 20px 15px;
             min-width: 100px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             position: relative;
             overflow: hidden;
-            border-top: 4px solid #d1e8d1;
+            border: 2px solid #d1e8d1;
             transition: all 0.6s ease;
         }
         .timer-item:hover {
@@ -383,10 +383,10 @@
         .timer-item::before {
             content: "";
             position: absolute;
-            top: -4px;
+            top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(to right, #d1e8d1, #a0c8a0, #d1e8d1);
             animation: borderFlow 8s linear infinite;
         }
@@ -509,12 +509,12 @@
 
         /* Тайминг дня */
         .timing-section {
-            background: linear-gradient(to right, rgba(209, 232, 209, 0.1), rgba(160, 200, 160, 0.1));
-            border-left: 4px solid #a0c8a0;
+            background: linear-gradient(135deg, rgba(248, 251, 248, 0.95), rgba(240, 248, 240, 0.95));
+            border: 2px solid #a0c8a0;
             padding: 40px 30px;
             margin: 40px auto;
             max-width: 800px;
-            border-radius: 0 15px 15px 0;
+            border-radius: 15px;
             position: relative;
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
@@ -556,12 +556,18 @@
             margin-top: 20px;
         }
         .timing-item {
-            background: rgba(255, 255, 255, 0.9);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 251, 248, 0.95));
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0f0e0;
             flex: 1;
             min-width: 300px;
+            transition: all 0.3s ease;
+        }
+        .timing-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         .timing-time {
             font-size: 1.8rem;
@@ -633,13 +639,13 @@
             animation: fadeInUp 1s 2.7s forwards;
         }
         .gift-card, .dress-card {
-            background: #f8fbf8;
+            background: linear-gradient(135deg, #f8fbf8, #f0f8f0);
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             position: relative;
             overflow: hidden;
-            border-top: 4px solid #d1e8d1;
+            border: 2px solid #d1e8d1;
             transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             flex: 1;
             min-width: 300px;
@@ -651,10 +657,10 @@
         .gift-card::before, .dress-card::before {
             content: "";
             position: absolute;
-            top: -4px;
+            top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(to right, #d1e8d1, #a0c8a0, #d1e8d1);
             animation: borderFlow 8s linear infinite;
         }
@@ -694,7 +700,8 @@
 
         /* Ведущий */
         .host-section {
-            background: linear-gradient(to right, rgba(160, 200, 160, 0.1), rgba(209, 232, 209, 0.1));
+            background: linear-gradient(135deg, rgba(248, 251, 248, 0.95), rgba(240, 248, 240, 0.95));
+            border: 2px solid #a0c8a0;
             padding: 40px;
             margin: 50px auto;
             max-width: 700px;
@@ -839,145 +846,71 @@
                 padding: 0;
             }
             .container.invitation-open {
-                padding: 10px;
+                padding: 5px;
             }
+            
+            /* Конверт */
             .envelope-container {
-                max-width: 98vw;
-                height: 320px;
+                max-width: 95vw;
+                height: 280px;
+                margin-bottom: 20px;
             }
             .envelope-front {
-                padding: 0 4vw;
+                padding: 0 3vw;
             }
             .seal {
-                width: 60px;
-                height: 60px;
-                font-size: 1.7rem;
-                top: 38%;
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+                top: 35%;
             }
             .envelope-content {
-                top: 58%;
+                top: 55%;
             }
             .names {
-                font-size: 1.3em;
+                font-size: 1.1em;
+                margin-bottom: 4px;
             }
+            .invitation-title {
+                font-size: 0.9em;
+                margin-bottom: 4px;
+            }
+            .open-text {
+                font-size: 0.8em;
+            }
+            
+            /* Приглашение */
             .invitation-container {
-                max-width: 99vw;
-                padding: 30px 15px;
-                margin: 10px auto;
+                max-width: 98vw;
+                padding: 20px 10px;
+                margin: 5px auto;
+                border-radius: 15px;
+            }
+            .invitation-header {
+                margin-bottom: 20px;
+                padding: 15px 0;
             }
             .invitation-names {
-                font-size: 3.2rem;
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-            }
-            .couple-title {
                 font-size: 2.8rem;
+                margin: 10px 0;
+                letter-spacing: 1px;
             }
-            .couple-title::before,
-            .couple-title::after {
-                font-size: 1.2rem;
-            }
-            .couple-title::before {
-                left: -35px;
-            }
-            .couple-title::after {
-                right: -35px;
-            }
-            .couple-photos {
-                flex-direction: row !important;
-                flex-wrap: nowrap;
-                justify-content: center;
-                gap: 15px;
+            .date {
+                font-size: 1.4rem;
+                margin-top: 5px;
             }
             
-            .couple-photo {
-                width: 45% !important;
-                max-width: 180px;
-                height: 220px;
-                margin: 0;
-            }
-            
-            .countdown-timer {
-                display: grid !important;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 10px;
-                width: 100%;
-            }
-            
-            .timer-item {
-                min-width: auto !important;
-                width: 100%;
-                padding: 12px 5px !important;
-            }
-            
-            .timer-value {
-                font-size: 1.8rem !important;
-            }
-            
-            .timer-label {
-                font-size: 0.8rem !important;
-            }
-            
-            .timing-grid {
-                display: grid !important;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            
-            .timing-item {
-                min-width: auto !important;
-                padding: 20px 15px !important;
-            }
-            
-            .timing-photos {
-                display: grid !important;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            
-            .timing-photo {
-                min-width: auto !important;
-                height: 150px;
-            }
-            
-            .gift-dress-section {
-                display: grid !important;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            
-            .gift-card, .dress-card {
-                min-width: auto !important;
-                padding: 20px 15px !important;
-            }
-            
-            .gift-title, .dress-title {
-                font-size: 1.6rem !important;
-            }
-            
-            .gift-text, .dress-text {
-                font-size: 1.2rem !important;
-            }
-            
-            .invitation-text {
-                font-size: 1.3rem !important;
-                padding: 20px 10px !important;
-            }
-            .invitation-text::before,
-            .invitation-text::after {
-                display: none;
-            }
-        }
-        @media (max-width: 480px) {
-            .invitation-container {
-                padding: 20px 5px;
-            }
-            .invitation-names {
-                font-size: 2.5rem;
+            /* Фото пары */
+            .couple-section {
+                margin: 20px 0;
             }
             .couple-title {
                 font-size: 2.2rem;
+                margin-bottom: 20px;
+            }
+            .couple-title::before,
+            .couple-title::after {
+                font-size: 1rem;
             }
             .couple-title::before {
                 left: -25px;
@@ -985,118 +918,905 @@
             .couple-title::after {
                 right: -25px;
             }
+            .couple-photos {
+                gap: 12px;
+                max-width: 100%;
+            }
             .couple-photo {
-                width: 48% !important;
-                max-width: 150px;
-                height: 200px;
+                width: 42% !important;
+                max-width: 140px;
+                height: 180px;
+                border-radius: 10px;
+            }
+            .couple-label {
+                bottom: 10px;
+                padding: 6px 15px;
+                font-size: 1.4rem;
             }
             
-            .countdown-timer {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 8px;
+            /* Таймер */
+            .countdown-section {
+                margin: 25px 0;
             }
-            
-            .timer-item {
-                padding: 10px 4px !important;
+            .countdown-title {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
             }
-            
-            .timer-value {
-                font-size: 1.5rem !important;
-            }
-            
-            .timer-label {
-                font-size: 0.7rem !important;
-            }
-            
-            .timing-grid {
-                gap: 10px;
-            }
-            
-            .timing-item {
-                padding: 15px 10px !important;
-            }
-            
-            .timing-time {
-                font-size: 1.4rem !important;
-            }
-            
-            .timing-event {
-                font-size: 1.2rem !important;
-            }
-            
-            .timing-address {
-                font-size: 1.1rem !important;
-            }
-            
-            .timing-photos {
-                gap: 10px;
-            }
-            
-            .timing-photo {
-                height: 120px;
-            }
-            
-            .gift-dress-section {
-                gap: 10px;
-            }
-            
-            .gift-card, .dress-card {
-                padding: 15px 10px !important;
-            }
-            
-            .gift-title, .dress-title {
-                font-size: 1.4rem !important;
-                margin-bottom: 10px !important;
-            }
-            
-            .gift-text, .dress-text {
-                font-size: 1.1rem !important;
-                margin-top: 10px !important;
-            }
-            
-            .invitation-text {
+            .countdown-date {
                 font-size: 1.2rem;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
+            .countdown-timer {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 6px;
+                width: 100%;
+            }
+            .timer-item {
+                min-width: auto !important;
+                width: 100%;
+                padding: 12px 6px !important;
+                border-radius: 8px;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 1px solid #d1e8d1 !important;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1) !important;
+            }
+            .timer-value {
+                font-size: 1.8rem !important;
+                margin-bottom: 4px;
+                color: #4a6b4a !important;
+            }
+            .timer-label {
+                font-size: 0.75rem !important;
+                color: #6a8a6a !important;
+                font-weight: 500;
+            }
+            
+            /* Текст приглашения */
+            .content {
+                padding: 15px 10px 20px;
+            }
+            .invitation-text {
+                font-size: 1.2rem !important;
+                padding: 20px 5px !important;
+                margin-bottom: 25px;
+                line-height: 1.6;
+            }
+            .invitation-text::before,
+            .invitation-text::after {
+                display: none;
+            }
+            
+            /* Календарик */
+            .calendar-section {
+                margin: 25px auto;
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .calendar-icon {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+            .calendar-title {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+            .calendar-date {
+                font-size: 1.5rem;
+                margin-top: 10px;
+            }
+            
+            /* Тайминг дня */
+            .timing-section {
+                padding: 25px 15px;
+                margin: 25px auto;
+                border-radius: 12px !important;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 2px solid #a0c8a0 !important;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+            }
+            .timing-title {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                text-align: center !important;
+            }
+            .timing-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 15px;
+                margin-top: 15px;
+                align-items: center !important;
+            }
+            .timing-item {
+                width: 100% !important;
+                max-width: 400px !important;
+                padding: 20px 18px !important;
+                border-radius: 12px;
+                background: #ffffff !important;
+                border: 1px solid #e0f0e0 !important;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
+                text-align: center !important;
+            }
+            .timing-time {
+                font-size: 1.6rem !important;
+                margin-bottom: 10px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
+            }
+            .timing-event {
+                font-size: 1.4rem !important;
+                margin-bottom: 15px;
+                color: #6a8c6a !important;
+                font-weight: 500 !important;
+            }
+            .timing-location {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 8px;
+                margin-top: 15px;
+            }
+            .timing-location i {
+                font-size: 1.6rem !important;
+                color: #8db98d !important;
+            }
+            .timing-address {
+                font-size: 1.2rem !important;
+                line-height: 1.5;
+                color: #5a7a5a !important;
+                text-align: center !important;
+            }
+            .timing-photos {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 15px;
+                margin-top: 25px;
+                align-items: center !important;
+            }
+            .timing-photo {
+                width: 100% !important;
+                max-width: 350px !important;
+                height: 150px;
+                border-radius: 10px;
+                background: #f8fbf8 !important;
+                border: 1px solid #e0f0e0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
+            /* Подарки и дресс-код */
+            .gift-dress-section {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px;
+                margin: 30px auto;
+                align-items: center !important;
+            }
+            .gift-card, .dress-card {
+                width: 100% !important;
+                max-width: 450px !important;
+                padding: 25px 20px !important;
+                border-radius: 15px;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 2px solid #d1e8d1 !important;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+                text-align: center !important;
+            }
+            .gift-icon, .dress-icon {
+                font-size: 3rem;
+                margin-bottom: 18px;
+                color: #8db98d !important;
+            }
+            .gift-title, .dress-title {
+                font-size: 1.8rem !important;
+                margin-bottom: 15px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
+            }
+            .gift-text, .dress-text {
+                font-size: 1.3rem !important;
+                line-height: 1.7;
+                margin-top: 15px;
+                color: #6a8c6a !important;
+                text-align: left !important;
+            }
+            
+            /* Ведущий */
             .host-section {
-                padding: 25px 15px !important;
+                padding: 25px 18px !important;
+                margin: 30px auto;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 2px solid #a0c8a0 !important;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+            }
+            .host-title {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
+            }
+            .host-text {
+                font-size: 1.3rem !important;
+                line-height: 1.6;
+                margin-bottom: 20px;
+                color: #6a8c6a !important;
+            }
+            .host-contact {
+                font-size: 1.5rem;
+                margin-top: 15px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
             }
             .host-contact a {
                 font-size: 1.3rem !important;
-                padding: 8px 15px !important;
+                padding: 10px 18px !important;
+                background: #8db98d !important;
+                color: white !important;
+                border-radius: 25px !important;
+                text-decoration: none !important;
+                display: inline-block !important;
+                margin-top: 8px !important;
+                transition: all 0.3s ease !important;
             }
-            .signature {
-                font-size: 2.8rem;
-            }
-        }
-        @media (max-width: 350px) {
-            .couple-photo {
-                max-width: 140px;
-                height: 180px;
+            .host-contact a:hover {
+                background: #4a6b4a !important;
+                transform: translateY(-2px) !important;
             }
             
+            /* Подпись */
+            .signature-section {
+                margin: 30px 0 20px;
+                padding: 15px;
+            }
+            .signature {
+                font-size: 2.5rem;
+                padding: 0 30px;
+            }
+        }
+        @media (max-width: 480px) {
+            /* Конверт */
+            .envelope-container {
+                max-width: 92vw;
+                height: 250px;
+                margin-bottom: 15px;
+            }
+            .seal {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                top: 32%;
+            }
+            .envelope-content {
+                top: 52%;
+            }
+            .names {
+                font-size: 1em;
+                margin-bottom: 3px;
+            }
+            .invitation-title {
+                font-size: 0.8em;
+                margin-bottom: 3px;
+            }
+            .open-text {
+                font-size: 0.7em;
+            }
+            
+            /* Приглашение */
+            .invitation-container {
+                max-width: 96vw;
+                padding: 15px 8px;
+                margin: 3px auto;
+                border-radius: 12px;
+            }
+            .invitation-header {
+                margin-bottom: 15px;
+                padding: 10px 0;
+            }
+            .invitation-names {
+                font-size: 2.2rem;
+                margin: 8px 0;
+                letter-spacing: 0.5px;
+            }
+            .date {
+                font-size: 1.2rem;
+                margin-top: 3px;
+            }
+            
+            /* Фото пары */
+            .couple-section {
+                margin: 15px 0;
+            }
+            .couple-title {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            .couple-title::before,
+            .couple-title::after {
+                font-size: 0.8rem;
+            }
+            .couple-title::before {
+                left: -20px;
+            }
+            .couple-title::after {
+                right: -20px;
+            }
+            .couple-photos {
+                gap: 8px;
+            }
+            .couple-photo {
+                width: 45% !important;
+                max-width: 120px;
+                height: 150px;
+                border-radius: 8px;
+            }
+            .couple-label {
+                bottom: 8px;
+                padding: 4px 10px;
+                font-size: 1.2rem;
+            }
+            
+            /* Таймер */
+            .countdown-section {
+                margin: 20px 0;
+            }
+            .countdown-title {
+                font-size: 1.5rem;
+                margin-bottom: 8px;
+            }
+            .countdown-date {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
             .countdown-timer {
                 gap: 5px;
             }
-            
             .timer-item {
-                padding: 8px 2px !important;
+                padding: 10px 4px !important;
+                border-radius: 6px;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 1px solid #d1e8d1 !important;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
             }
-            
             .timer-value {
-                font-size: 1.3rem !important;
+                font-size: 1.4rem !important;
+                margin-bottom: 3px;
+                color: #4a6b4a !important;
+            }
+            .timer-label {
+                font-size: 0.65rem !important;
+                color: #6a8a6a !important;
+                font-weight: 500;
             }
             
+            /* Текст приглашения */
+            .content {
+                padding: 12px 8px 15px;
+            }
+            .invitation-text {
+                font-size: 1.1rem !important;
+                padding: 15px 3px !important;
+                margin-bottom: 20px;
+                line-height: 1.5;
+            }
+            
+            /* Календарик */
+            .calendar-section {
+                margin: 20px auto;
+                padding: 15px;
+                border-radius: 8px;
+            }
+            .calendar-icon {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+            .calendar-title {
+                font-size: 1.3rem;
+                margin-bottom: 8px;
+            }
+            .calendar-date {
+                font-size: 1.3rem;
+                margin-top: 8px;
+            }
+            
+            /* Тайминг дня */
+            .timing-section {
+                padding: 20px 12px;
+                margin: 20px auto;
+                border-radius: 10px !important;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 2px solid #a0c8a0 !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+            }
+            .timing-title {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+                text-align: center !important;
+            }
             .timing-grid {
-                grid-template-columns: 1fr;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px;
+                margin-top: 12px;
+                align-items: center !important;
             }
-            
+            .timing-item {
+                width: 100% !important;
+                max-width: 350px !important;
+                padding: 18px 15px !important;
+                border-radius: 10px;
+                background: #ffffff !important;
+                border: 1px solid #e0f0e0 !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+                text-align: center !important;
+            }
+            .timing-time {
+                font-size: 1.4rem !important;
+                margin-bottom: 8px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
+            }
+            .timing-event {
+                font-size: 1.3rem !important;
+                margin-bottom: 12px;
+                color: #6a8c6a !important;
+                font-weight: 500 !important;
+            }
+            .timing-location {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 6px;
+                margin-top: 12px;
+            }
+            .timing-location i {
+                font-size: 1.4rem !important;
+                color: #8db98d !important;
+            }
+            .timing-address {
+                font-size: 1.1rem !important;
+                line-height: 1.4;
+                color: #5a7a5a !important;
+                text-align: center !important;
+            }
             .timing-photos {
-                grid-template-columns: repeat(2, 1fr);
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px;
+                margin-top: 20px;
+                align-items: center !important;
+            }
+            .timing-photo {
+                width: 100% !important;
+                max-width: 300px !important;
+                height: 130px;
+                border-radius: 8px;
+                background: #f8fbf8 !important;
+                border: 1px solid #e0f0e0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .timing-photos {
+                gap: 8px;
+                margin-top: 15px;
+            }
+            .timing-photo {
+                height: 100px;
+                border-radius: 6px;
             }
             
+            /* Подарки и дресс-код */
             .gift-dress-section {
-                grid-template-columns: 1fr;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 15px;
+                margin: 25px auto;
+                align-items: center !important;
+            }
+            .gift-card, .dress-card {
+                width: 100% !important;
+                max-width: 380px !important;
+                padding: 20px 18px !important;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 2px solid #d1e8d1 !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+                text-align: center !important;
+            }
+            .gift-icon, .dress-icon {
+                font-size: 2.5rem;
+                margin-bottom: 12px;
+                color: #8db98d !important;
+            }
+            .gift-title, .dress-title {
+                font-size: 1.5rem !important;
+                margin-bottom: 10px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
+            }
+            .gift-text, .dress-text {
+                font-size: 1.2rem !important;
+                line-height: 1.6;
+                margin-top: 10px;
+                color: #6a8c6a !important;
+                text-align: left !important;
+            }
+            
+            /* Ведущий */
+            .host-section {
+                padding: 20px 15px !important;
+                margin: 25px auto;
+                border-radius: 10px;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 2px solid #a0c8a0 !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+            }
+            .host-title {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
+            }
+            .host-text {
+                font-size: 1.2rem !important;
+                line-height: 1.5;
+                margin-bottom: 15px;
+                color: #6a8c6a !important;
+            }
+            .host-contact {
+                font-size: 1.3rem;
+                margin-top: 12px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
+            }
+            .host-contact a {
+                font-size: 1.2rem !important;
+                padding: 8px 15px !important;
+                background: #8db98d !important;
+                color: white !important;
+                border-radius: 20px !important;
+                text-decoration: none !important;
+                display: inline-block !important;
+                margin-top: 6px !important;
+                transition: all 0.3s ease !important;
+            }
+            .host-contact a:hover {
+                background: #4a6b4a !important;
+                transform: translateY(-2px) !important;
+            }
+            
+            /* Подпись */
+            .signature-section {
+                margin: 25px 0 15px;
+                padding: 12px;
+            }
+            .signature {
+                font-size: 2.2rem;
+                padding: 0 25px;
+            }
+        }
+        @media (max-width: 350px) {
+            /* Конверт */
+            .envelope-container {
+                max-width: 90vw;
+                height: 220px;
+                margin-bottom: 10px;
+            }
+            .seal {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                top: 30%;
+            }
+            .envelope-content {
+                top: 50%;
+            }
+            .names {
+                font-size: 0.9em;
+                margin-bottom: 2px;
+            }
+            .invitation-title {
+                font-size: 0.7em;
+                margin-bottom: 2px;
+            }
+            .open-text {
+                font-size: 0.6em;
+            }
+            
+            /* Приглашение */
+            .invitation-container {
+                max-width: 94vw;
+                padding: 12px 6px;
+                margin: 2px auto;
+                border-radius: 10px;
+            }
+            .invitation-header {
+                margin-bottom: 12px;
+                padding: 8px 0;
+            }
+            .invitation-names {
+                font-size: 1.8rem;
+                margin: 6px 0;
+                letter-spacing: 0.3px;
+            }
+            .date {
+                font-size: 1rem;
+                margin-top: 2px;
+            }
+            
+            /* Фото пары */
+            .couple-section {
+                margin: 12px 0;
+            }
+            .couple-title {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+            .couple-title::before,
+            .couple-title::after {
+                font-size: 0.7rem;
+            }
+            .couple-title::before {
+                left: -15px;
+            }
+            .couple-title::after {
+                right: -15px;
+            }
+            .couple-photos {
+                gap: 6px;
+            }
+            .couple-photo {
+                width: 42% !important;
+                max-width: 100px;
+                height: 120px;
+                border-radius: 6px;
+            }
+            .couple-label {
+                bottom: 6px;
+                padding: 3px 8px;
+                font-size: 1rem;
+            }
+            
+            /* Таймер */
+            .countdown-section {
+                margin: 15px 0;
+            }
+            .countdown-title {
+                font-size: 1.3rem;
+                margin-bottom: 6px;
+            }
+            .countdown-date {
+                font-size: 0.9rem;
+                margin-bottom: 12px;
+            }
+            .countdown-timer {
+                gap: 3px;
+            }
+            .timer-item {
+                padding: 8px 3px !important;
+                border-radius: 5px;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 1px solid #d1e8d1 !important;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+            }
+            .timer-value {
+                font-size: 1.2rem !important;
+                margin-bottom: 2px;
+                color: #4a6b4a !important;
+            }
+            .timer-label {
+                font-size: 0.55rem !important;
+                color: #6a8a6a !important;
+                font-weight: 500;
+            }
+            
+            /* Текст приглашения */
+            .content {
+                padding: 10px 6px 12px;
+            }
+            .invitation-text {
+                font-size: 1rem !important;
+                padding: 12px 2px !important;
+                margin-bottom: 15px;
+                line-height: 1.4;
+            }
+            
+            /* Календарик */
+            .calendar-section {
+                margin: 15px auto;
+                padding: 12px;
+                border-radius: 6px;
+            }
+            .calendar-icon {
+                font-size: 1.8rem;
+                margin-bottom: 8px;
+            }
+            .calendar-title {
+                font-size: 1.1rem;
+                margin-bottom: 6px;
+            }
+            .calendar-date {
+                font-size: 1.1rem;
+                margin-top: 6px;
+            }
+            
+            /* Тайминг дня */
+            .timing-section {
+                padding: 15px 10px;
+                margin: 15px auto;
+                border-radius: 8px !important;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 2px solid #a0c8a0 !important;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1) !important;
+            }
+            .timing-title {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+                text-align: center !important;
+            }
+            .timing-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 10px;
+                margin-top: 10px;
+                align-items: center !important;
+            }
+            .timing-item {
+                width: 100% !important;
+                max-width: 280px !important;
+                padding: 15px 12px !important;
+                border-radius: 8px;
+                background: #ffffff !important;
+                border: 1px solid #e0f0e0 !important;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+                text-align: center !important;
+            }
+            .timing-time {
+                font-size: 1.2rem !important;
+                margin-bottom: 6px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
+            }
+            .timing-event {
+                font-size: 1.1rem !important;
+                margin-bottom: 8px;
+                color: #6a8c6a !important;
+                font-weight: 500 !important;
+            }
+            .timing-location {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 5px;
+                margin-top: 8px;
+            }
+            .timing-location i {
+                font-size: 1.2rem !important;
+                color: #8db98d !important;
+            }
+            .timing-address {
+                font-size: 1rem !important;
+                line-height: 1.3;
+                color: #5a7a5a !important;
+                text-align: center !important;
+            }
+            .timing-photos {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 10px;
+                margin-top: 15px;
+                align-items: center !important;
+            }
+            .timing-photo {
+                width: 100% !important;
+                max-width: 250px !important;
+                height: 110px;
+                border-radius: 6px;
+                background: #f8fbf8 !important;
+                border: 1px solid #e0f0e0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .timing-photos {
+                gap: 6px;
+                margin-top: 12px;
+            }
+            .timing-photo {
+                height: 80px;
+                border-radius: 4px;
+            }
+            
+            /* Подарки и дресс-код */
+            .gift-dress-section {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px;
+                margin: 20px auto;
+                align-items: center !important;
+            }
+            .gift-card, .dress-card {
+                width: 100% !important;
+                max-width: 300px !important;
+                padding: 18px 15px !important;
+                border-radius: 10px;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 2px solid #d1e8d1 !important;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1) !important;
+                text-align: center !important;
+            }
+            .gift-icon, .dress-icon {
+                font-size: 2.2rem;
+                margin-bottom: 10px;
+                color: #8db98d !important;
+            }
+            .gift-title, .dress-title {
+                font-size: 1.3rem !important;
+                margin-bottom: 8px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
+            }
+            .gift-text, .dress-text {
+                font-size: 1.1rem !important;
+                line-height: 1.5;
+                margin-top: 8px;
+                color: #6a8c6a !important;
+                text-align: left !important;
+            }
+            
+            /* Ведущий */
+            .host-section {
+                padding: 15px 12px !important;
+                margin: 20px auto;
+                border-radius: 8px;
+                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
+                border: 2px solid #a0c8a0 !important;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1) !important;
+            }
+            .host-title {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
+            }
+            .host-text {
+                font-size: 1.1rem !important;
+                line-height: 1.4;
+                margin-bottom: 12px;
+                color: #6a8c6a !important;
+            }
+            .host-contact {
+                font-size: 1.1rem;
+                margin-top: 10px;
+                color: #4a6b4a !important;
+                font-weight: 600 !important;
+            }
+            .host-contact a {
+                font-size: 1.1rem !important;
+                padding: 6px 12px !important;
+                background: #8db98d !important;
+                color: white !important;
+                border-radius: 15px !important;
+                text-decoration: none !important;
+                display: inline-block !important;
+                margin-top: 5px !important;
+                transition: all 0.3s ease !important;
+            }
+            .host-contact a:hover {
+                background: #4a6b4a !important;
+                transform: translateY(-2px) !important;
+            }
+            
+            /* Подпись */
+            .signature-section {
+                margin: 20px 0 12px;
+                padding: 10px;
+            }
+            .signature {
+                font-size: 1.8rem;
+                padding: 0 20px;
             }
         }
 
