@@ -423,6 +423,7 @@
             opacity: 1;
             animation: fadeInUp 1s 1.8s forwards;
             font-family: 'Cormorant Garamond', serif;
+            text-align: center;
         }
         .invitation-text::before,
         .invitation-text::after {
@@ -459,6 +460,7 @@
             transform: translateY(30px);
             opacity: 1;
             animation: fadeInUp 1s 2.1s forwards;
+            text-align: center;
         }
         .calendar-section:hover {
             transform: translateY(-10px);
@@ -595,6 +597,11 @@
             font-size: 1.3rem;
             color: #5a7a5a;
             line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        .timing-address:hover {
+            color: #8db98d;
+            transform: translateY(-2px);
         }
         .timing-photos {
             display: flex;
@@ -982,6 +989,7 @@
                 padding: 20px 5px !important;
                 margin-bottom: 25px;
                 line-height: 1.6;
+                text-align: center !important;
             }
             .invitation-text::before,
             .invitation-text::after {
@@ -993,6 +1001,7 @@
                 margin: 25px auto;
                 padding: 20px;
                 border-radius: 10px;
+                text-align: center !important;
             }
             .calendar-icon {
                 font-size: 2.5rem;
@@ -1066,6 +1075,11 @@
                 line-height: 1.5;
                 color: #5a7a5a !important;
                 text-align: center !important;
+                transition: all 0.3s ease !important;
+            }
+            .timing-address:hover {
+                color: #8db98d !important;
+                transform: translateY(-2px) !important;
             }
             .timing-photos {
                 display: flex !important;
@@ -1311,6 +1325,7 @@
                 padding: 15px 3px !important;
                 margin-bottom: 20px;
                 line-height: 1.5;
+                text-align: center !important;
             }
             
             /* Календарик */
@@ -1318,6 +1333,7 @@
                 margin: 20px auto;
                 padding: 15px;
                 border-radius: 8px;
+                text-align: center !important;
             }
             .calendar-icon {
                 font-size: 2rem;
@@ -1391,6 +1407,11 @@
                 line-height: 1.4;
                 color: #5a7a5a !important;
                 text-align: center !important;
+                transition: all 0.3s ease !important;
+            }
+            .timing-address:hover {
+                color: #8db98d !important;
+                transform: translateY(-2px) !important;
             }
             .timing-photos {
                 display: flex !important;
@@ -1644,6 +1665,7 @@
                 padding: 12px 2px !important;
                 margin-bottom: 15px;
                 line-height: 1.4;
+                text-align: center !important;
             }
             
             /* Календарик */
@@ -1651,6 +1673,7 @@
                 margin: 15px auto;
                 padding: 12px;
                 border-radius: 6px;
+                text-align: center !important;
             }
             .calendar-icon {
                 font-size: 1.8rem;
@@ -1724,6 +1747,11 @@
                 line-height: 1.3;
                 color: #5a7a5a !important;
                 text-align: center !important;
+                transition: all 0.3s ease !important;
+            }
+            .timing-address:hover {
+                color: #8db98d !important;
+                transform: translateY(-2px) !important;
             }
             .timing-photos {
                 display: flex !important;
@@ -1854,8 +1882,60 @@
             }
         }
 
+        /* Модальное окно для фотографий */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
 
-
+        /* Стили для видимых фотографий */
+        .couple-photo img,
+        .timing-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .couple-photo img:hover,
+        .timing-photo img:hover {
+            transform: scale(1.05);
+        }
 
     </style>
 </head>
@@ -1895,42 +1975,12 @@
                 <h2 class="couple-title">Кирилл + Анна</h2>
                 <div class="couple-photos">
                     <div class="couple-photo">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-camera fa-3x" style="opacity:0.3; margin-bottom:15px;"></i><br>
-                            Детская фотография Кирилла
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=280&h=350&q=80" alt="Детская фотография Кирилла" onclick="openModal(this.src)">
                         <div class="couple-label">Жених</div>
                     </div>
                     <div class="couple-photo">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-camera fa-3x" style="opacity:0.3; margin-bottom:15px;"></i><br>
-                            Детская фотография Анны
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=280&h=350&q=80" alt="Детская фотография Анны" onclick="openModal(this.src)">
                         <div class="couple-label">Невеста</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Таймер -->
-            <div class="countdown-section">
-                <h3 class="countdown-title">Обратный отсчет до события</h3>
-                <div class="countdown-date">21 сентября 2025 года</div>
-                <div class="countdown-timer">
-                    <div class="timer-item">
-                        <span class="timer-value" id="days">00</span>
-                        <span class="timer-label">дней</span>
-                    </div>
-                    <div class="timer-item">
-                        <span class="timer-value" id="hours">00</span>
-                        <span class="timer-label">часов</span>
-                    </div>
-                    <div class="timer-item">
-                        <span class="timer-value" id="minutes">00</span>
-                        <span class="timer-label">минут</span>
-                    </div>
-                    <div class="timer-item">
-                        <span class="timer-value" id="seconds">00</span>
-                        <span class="timer-label">секунд</span>
                     </div>
                 </div>
             </div>
@@ -1939,6 +1989,30 @@
                 <!-- Текст приглашения -->
                 <div class="invitation-text">
                     Дорогие друзья! Приглашаем вас на церемонию бракосочетания, которая состоится 21 сентября 2025 года. Ваше присутствие наполнит наш день особой радостью и теплом, превратив его в настоящую сказку любви и счастья.
+                </div>
+
+                <!-- Таймер -->
+                <div class="countdown-section">
+                    <h3 class="countdown-title">Обратный отсчет до события</h3>
+                    <div class="countdown-date">21 сентября 2025 года</div>
+                    <div class="countdown-timer">
+                        <div class="timer-item">
+                            <span class="timer-value" id="days">00</span>
+                            <span class="timer-label">дней</span>
+                        </div>
+                        <div class="timer-item">
+                            <span class="timer-value" id="hours">00</span>
+                            <span class="timer-label">часов</span>
+                        </div>
+                        <div class="timer-item">
+                            <span class="timer-value" id="minutes">00</span>
+                            <span class="timer-label">минут</span>
+                        </div>
+                        <div class="timer-item">
+                            <span class="timer-value" id="seconds">00</span>
+                            <span class="timer-label">секунд</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Календарик -->
@@ -1955,11 +2029,11 @@
                     <h3 class="timing-title">Тайминг дня</h3>
                     <div class="timing-grid">
                         <div class="timing-item">
-                            <div class="timing-time">16:00 - 16:30</div>
+                            <div class="timing-time">15:40 - 16:30</div>
                             <div class="timing-event">Сбор гостей</div>
                             <div class="timing-location">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <div class="timing-address">
+                                <div class="timing-address" onclick="openMap('Дворец бракосочетания №2, улица Фурштатская, дом 52, Санкт-Петербург')" style="cursor: pointer;">
                                     Дворец бракосочетания №2,<br>
                                     улица Фурштатская, дом 52
                                 </div>
@@ -1970,7 +2044,7 @@
                             <div class="timing-event">Банкетный вечер</div>
                             <div class="timing-location">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <div class="timing-address">
+                                <div class="timing-address" onclick="openMap('Ресторан Нева Холл, Сапёрный пер., 5, Санкт-Петербург')" style="cursor: pointer;">
                                     Ресторан "Нева Холл",<br>
                                     Сапёрный пер., 5
                                 </div>
@@ -1979,16 +2053,10 @@
                     </div>
                     <div class="timing-photos">
                         <div class="timing-photo">
-                            <div class="photo-placeholder">
-                                <i class="fas fa-image fa-2x" style="opacity:0.3; margin-bottom:10px;"></i><br>
-                                Фотография Загса
-                            </div>
+                            <img src="ZAGS.jpg" alt="Фотография Загса" onclick="openModal(this.src)">
                         </div>
                         <div class="timing-photo">
-                            <div class="photo-placeholder">
-                                <i class="fas fa-image fa-2x" style="opacity:0.3; margin-bottom:10px;"></i><br>
-                                Фотография Банкетного зала
-                            </div>
+                            <img src="unnamed.webp" alt="Фотография Банкетного зала" onclick="openModal(this.src)">
                         </div>
                     </div>
                 </div>
@@ -2042,6 +2110,12 @@
         </div>
     </div>
 
+    <!-- Модальное окно для фотографий -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const envelope = document.getElementById('envelope');
@@ -2067,34 +2141,39 @@
             // Открытие конверта
             envelope.addEventListener('click', openEnvelope);
 
-            // Загрузка фотографий
-            const photoElements = document.querySelectorAll('.photo-placeholder');
+            // Функция открытия карт
+            function openMap(address) {
+                // Открываем карту в новом окне с поиском адреса
+                const encodedAddress = encodeURIComponent(address);
+                const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+                window.open(mapUrl, '_blank');
+            }
 
-            photoElements.forEach(placeholder => {
-                placeholder.addEventListener('click', function() {
-                    // В реальном проекте замените ссылки на свои фотографии
-                    const placeholderText = this.textContent.trim();
-                    let imgUrl = '';
+            // Модальное окно для фотографий
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.getElementsByClassName('close')[0];
 
-                    if(placeholderText.includes('Кирилла')) {
-                        imgUrl = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=280&h=350&q=80';
-                    } else if(placeholderText.includes('Анны')) {
-                        imgUrl = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=280&h=350&q=80';
-                    } else if(placeholderText.includes('Загса')) {
-                        imgUrl = 'https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=500&h=180&q=80';
-                    } else if(placeholderText.includes('Банкетного')) {
-                        imgUrl = 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=500&h=180&q=80';
-                    }
+            function openModal(imgSrc) {
+                modal.style.display = 'block';
+                modalImg.src = imgSrc;
+            }
 
-                    if(imgUrl) {
-                        this.innerHTML = `<img src="${imgUrl}" alt="${placeholderText}">`;
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            }
 
-                        // Анимация после загрузки фото
-                        setTimeout(() => {
-                            this.closest('.couple-photo, .timing-photo').style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2)';
-                        }, 300);
-                    }
-                });
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
+
+            // Закрытие модального окна по клавише Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                }
             });
 
             // Таймер обратного отсчета
