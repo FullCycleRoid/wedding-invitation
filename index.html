@@ -56,14 +56,18 @@
             height: 420px;
             cursor: pointer;
             transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 10;
             margin-bottom: 40px;
             background: none;
         }
+        .envelope-container:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+        }
         .envelope-container.open {
-            transform: translateY(-100px) rotateX(180deg) scale(0.8);
-            visibility: hidden;
+            transform: translateY(-50px) rotateX(15deg) scale(0.95);
+            opacity: 0;
         }
         .envelope {
             position: absolute;
@@ -99,12 +103,12 @@
             background: linear-gradient(135deg, #d1e8d1, #c0e0c0);
             transform-origin: top;
             transform: rotateX(0deg);
-            transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: transform 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border-radius: 10px 10px 0 0;
             z-index: 2;
         }
         .envelope-container.open .envelope-flap {
-            transform: rotateX(180deg);
+            transform: rotateX(120deg);
         }
         .seal {
             position: absolute;
@@ -122,12 +126,16 @@
             font-size: 2.5rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             z-index: 3;
-            transition: transform 0.5s ease, opacity 0.5s ease;
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             animation: sealPulse 2s infinite alternate;
             cursor: pointer;
         }
+        .seal:hover {
+            transform: translate(-50%, -50%) scale(1.15);
+            box-shadow: 0 15px 35px rgba(141, 185, 141, 0.4);
+        }
         .envelope-container.open .seal {
-            transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%) scale(0.8) translateY(-20px);
             opacity: 0;
         }
         .envelope-content {
@@ -183,9 +191,9 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             position: relative;
-            transform: scale(0.9);
+            transform: scale(0.7) translateY(100px);
             opacity: 0;
-            animation: scaleUp 1s 0.5s forwards;
+            transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
             backdrop-filter: blur(5px);
             padding: 40px 20px;
             margin: 20px auto;
@@ -195,7 +203,7 @@
         .invitation-container.show {
             display: block;
             opacity: 1;
-            transform: scale(1);
+            transform: scale(1) translateY(0);
         }
         .invitation-header {
             text-align: center;
@@ -222,7 +230,7 @@
             position: relative;
             display: inline-block;
             opacity: 0;
-            animation: fadeIn 1s 1s ease-out forwards;
+            animation: fadeIn 0.8s 0.5s ease-out forwards;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
         .invitation-names span.heart {
@@ -236,7 +244,7 @@
             font-weight: 400;
             letter-spacing: 1px;
             opacity: 0;
-            animation: fadeIn 1s 1.3s ease-out forwards;
+            animation: fadeIn 0.8s 0.7s ease-out forwards;
             margin-top: 10px;
         }
 
@@ -247,7 +255,7 @@
             position: relative;
             z-index: 10;
             opacity: 0;
-            animation: fadeIn 1s 1.5s ease-out forwards;
+            animation: fadeIn 0.8s 0.9s ease-out forwards;
         }
         .couple-title {
             font-family: 'Cormorant Garamond', serif;
@@ -343,7 +351,7 @@
             position: relative;
             z-index: 10;
             opacity: 0;
-            animation: fadeIn 1s 1.7s ease-out forwards;
+            animation: fadeIn 0.8s 2.1s ease-out forwards;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -434,7 +442,7 @@
             position: relative;
             padding: 30px 0;
             opacity: 0;
-            animation: fadeInUp 1s 1.8s ease-out forwards;
+            animation: fadeInUp 0.8s 1.1s ease-out forwards;
             font-family: 'Cormorant Garamond', serif;
             text-align: center;
             width: 100%;
@@ -473,7 +481,7 @@
             transition: all 0.6s ease;
             transform: translateY(30px);
             opacity: 0;
-            animation: fadeInUp 1s 2.1s ease-out forwards;
+            animation: fadeInUp 0.8s 1.3s ease-out forwards;
             text-align: center;
         }
         .calendar-section:hover {
@@ -536,7 +544,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
             transform: translateY(30px);
             opacity: 0;
-            animation: fadeInUp 1s 2.4s ease-out forwards;
+            animation: fadeInUp 0.8s 1.5s ease-out forwards;
         }
         .timing-section::before {
             content: "⌚";
@@ -657,7 +665,7 @@
             margin: 50px auto;
             transform: translateY(30px);
             opacity: 0;
-            animation: fadeInUp 1s 2.7s ease-out forwards;
+            animation: fadeInUp 0.8s 1.7s ease-out forwards;
             justify-content: center;
             align-items: stretch;
         }
@@ -736,8 +744,8 @@
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             transform: translateY(30px);
-            opacity: 1;
-            animation: fadeInUp 1s 3s forwards;
+            opacity: 0;
+            animation: fadeInUp 0.8s 1.9s ease-out forwards;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -797,8 +805,8 @@
             margin: 50px 0 30px;
             padding: 20px;
             transform: translateY(30px);
-            opacity: 1;
-            animation: fadeInUp 1s 3.3s forwards;
+            opacity: 0;
+            animation: fadeInUp 0.8s 2.3s ease-out forwards;
             text-align: center;
         }
         .signature {
@@ -852,8 +860,18 @@
             100% { transform: scale(1); opacity: 1; }
         }
         @keyframes sealPulse {
-            0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 rgba(141, 185, 141, 0.4); }
-            100% { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 30px rgba(141, 185, 141, 0.6); }
+            0% { 
+                transform: translate(-50%, -50%) scale(1); 
+                box-shadow: 0 0 0 rgba(141, 185, 141, 0.4);
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.05); 
+                box-shadow: 0 0 20px rgba(141, 185, 141, 0.5);
+            }
+            100% { 
+                transform: translate(-50%, -50%) scale(1.1); 
+                box-shadow: 0 0 30px rgba(141, 185, 141, 0.6);
+            }
         }
         @keyframes borderFlow {
             0% { background-position: 0 0; }
@@ -2162,7 +2180,7 @@
                     envelope.style.display = 'none';
                     showInvitation();
                     document.body.style.overflow = 'auto';
-                }, 900);
+                }, 1800);
             }
 
             // Открытие конверта
