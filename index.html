@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Основные стили */
         * {
             margin: 0;
             padding: 0;
@@ -15,21 +14,20 @@
         }
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #f8fbf8, #f0f8f0);
-            color: #4a6b4a;
+            background: linear-gradient(135deg, #ffdcd8, #f8d6cd);
+            color: #5c3a37;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
             overflow-x: hidden;
-            perspective: 1000px;
             transition: all 0.7s cubic-bezier(0.4,0,0.2,1);
         }
         body.invitation-open {
             align-items: flex-start;
             padding: 0;
-            background: linear-gradient(135deg, #f8fbf8 60%, #e0f0e0 100%);
+            background: linear-gradient(135deg, #ffdcd8 60%, #f8d6cd 100%);
         }
         .container {
             max-width: 100%;
@@ -63,7 +61,7 @@
         }
         .envelope-container:hover {
             transform: translateY(-5px) rotateX(5deg);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
         }
         .envelope-container.open {
             transform: translateY(-50px) rotateX(15deg) scale(0.95);
@@ -75,11 +73,11 @@
             height: 100%;
             backface-visibility: hidden;
             border-radius: 10px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
             overflow: visible;
         }
         .envelope-front {
-            background: linear-gradient(135deg, #f0f8f0, #e0f0e0);
+            background: linear-gradient(135deg, #ffdcd8, #f8d6cd);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -88,6 +86,7 @@
             position: relative;
             padding: 0 20px;
             justify-content: flex-start;
+            border: 1px solid rgba(231, 164, 147, 0.3);
         }
         .envelope-back {
             background: #fff;
@@ -100,12 +99,13 @@
             left: 0;
             width: 100%;
             height: 48%;
-            background: linear-gradient(135deg, #d1e8d1, #c0e0c0);
+            background: linear-gradient(135deg, #f8d6cd, #e7a493);
             transform-origin: top;
             transform: rotateX(0deg);
             transition: transform 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border-radius: 10px 10px 0 0;
             z-index: 2;
+            border: 1px solid rgba(231, 164, 147, 0.3);
         }
         .envelope-container.open .envelope-flap {
             transform: rotateX(120deg);
@@ -117,22 +117,23 @@
             transform: translate(-50%, -50%);
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #8db98d, #a0c8a0);
+            background: #e7a493;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
             font-size: 2.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             z-index: 3;
             transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             animation: sealPulse 2s infinite alternate;
             cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         .seal:hover {
             transform: translate(-50%, -50%) scale(1.15);
-            box-shadow: 0 15px 35px rgba(141, 185, 141, 0.4);
+            box-shadow: 0 15px 35px rgba(231, 164, 147, 0.4);
         }
         .envelope-container.open .seal {
             transform: translate(-50%, -50%) scale(0.8) translateY(-20px);
@@ -156,7 +157,7 @@
             gap: 12px;
             font-family: 'Parisienne', cursive;
             font-size: 2.1em;
-            color: #6a8c6a;
+            color: #5c3a37;
             margin: 0 0 6px 0;
             word-break: break-word;
             max-width: 90%;
@@ -173,31 +174,28 @@
             font-size: 1.1em;
             font-weight: 600;
             margin-bottom: 6px;
-            color: #4a6b4a;
+            color: #5c3a37;
             letter-spacing: 1px;
         }
         .open-text {
             font-size: 1em;
-            color: #7fa07f;
+            color: #8c635c;
             margin-top: 2px;
         }
-        /* Приглашение */
+
+        /* Приглашение - прозрачный фон */
         .invitation-container {
             display: none;
             max-width: 900px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 25px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+            background: transparent;
             overflow: hidden;
             position: relative;
             transform: scale(0.7) translateY(100px);
             opacity: 0;
             transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-            backdrop-filter: blur(5px);
             padding: 40px 20px;
             margin: 20px auto;
-            border: 1px solid #e0f0e0;
             text-align: center;
         }
         .invitation-container.show {
@@ -219,28 +217,27 @@
             transform: translateX(-50%);
             width: 200px;
             height: 2px;
-            background: linear-gradient(to right, #d1e8d1, #a0c8a0, #d1e8d1);
+            background: linear-gradient(to right, #e7a493, #d88b7a, #e7a493);
         }
         .invitation-names {
             font-family: 'Cormorant Garamond', serif;
             font-size: 4.5rem;
-            color: #4a6b4a;
+            color: #5c3a37;
             margin: 15px 0;
             letter-spacing: 2px;
             position: relative;
             display: inline-block;
             opacity: 0;
             animation: fadeIn 0.8s 0.5s ease-out forwards;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
         .invitation-names span.heart {
-            color: #8db98d;
+            color: #e7a493;
             margin: 0 15px;
             animation: heartbeat 1.5s infinite;
         }
         .date {
             font-size: 1.8rem;
-            color: #5a7a5a;
+            color: #8c635c;
             font-weight: 400;
             letter-spacing: 1px;
             opacity: 0;
@@ -248,100 +245,67 @@
             margin-top: 10px;
         }
 
-        /* Фото пары */
-        .couple-section {
+        /* Комбинированное фото - без границ */
+        .combined-section {
             text-align: center;
-            margin: 30px 0;
+            margin: 40px 0;
             position: relative;
             z-index: 10;
             opacity: 0;
             animation: fadeIn 0.8s 0.9s ease-out forwards;
         }
-        .couple-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            color: #4a6b4a;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
+        .combined-photo-container {
             position: relative;
-            display: inline-block;
-        }
-        .couple-title::before,
-        .couple-title::after {
-            content: "❧";
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #a0c8a0;
-            font-size: 1.8rem;
-        }
-        .couple-title::before {
-            left: -50px;
-        }
-        .couple-title::after {
-            right: -50px;
-        }
-        .couple-photos {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
+            max-width: 800px;
             margin: 0 auto;
-            max-width: 700px;
-        }
-        .couple-photo {
-            width: 250px;
-            height: 300px;
+            background: linear-gradient(to bottom, #ffdcd8, #f8d6cd);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+        }
+        .combined-photo {
+            width: 100%;
+            height: 945px;
+            overflow: hidden;
             position: relative;
-            background: linear-gradient(45deg, #f8fbf8, #f0f8f0);
+            background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #8db98d;
-            font-size: 1.2rem;
-            text-align: center;
-            cursor: pointer;
-            border: 1px solid #e0f0e0;
-            transition: all 0.5s ease;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
-        .couple-photo:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-        }
-        .couple-photo img {
+        .combined-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .couple-photo:hover img {
-            transform: scale(1.1);
+        .combined-photo:hover img {
+            transform: scale(1.03);
         }
-        .couple-label {
+        .combined-label {
             position: absolute;
-            bottom: 15px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(255, 255, 255, 0.85);
-            padding: 8px 25px;
-            border-radius: 30px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-family: 'Parisienne', cursive;
+            font-size: 2.8rem;
             font-weight: 700;
-            color: #4a6b4a;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: #e7a493;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             z-index: 20;
             transition: all 0.4s ease;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e0f0e0;
+            border: 1px solid rgba(231, 164, 147, 0.3);
         }
-        .couple-photo:hover .couple-label {
-            background: #8db98d;
+        .combined-photo:hover .combined-label {
+            background: #e7a493;
             color: white;
             transform: translateX(-50%) translateY(-10px);
-            box-shadow: 0 10px 25px rgba(141, 185, 141, 0.4);
+            box-shadow: 0 15px 35px rgba(231, 164, 147, 0.3);
         }
 
         /* Таймер */
@@ -359,14 +323,14 @@
         .countdown-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
-            color: #5a7a5a;
+            color: #5c3a37;
             margin-bottom: 15px;
             font-weight: 500;
             letter-spacing: 1px;
         }
         .countdown-date {
             font-size: 1.5rem;
-            color: #6a8c6a;
+            color: #8c635c;
             margin-bottom: 30px;
         }
         .countdown-timer {
@@ -379,24 +343,25 @@
             align-items: center;
         }
         .timer-item {
-            background: linear-gradient(135deg, #f8fbf8, #f0f8f0);
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 15px;
             padding: 20px 15px;
             min-width: 100px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             position: relative;
             overflow: hidden;
-            border: 2px solid #d1e8d1;
+            border: 1px solid rgba(231, 164, 147, 0.3);
             transition: all 0.6s ease;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
         }
         .timer-item:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         .timer-item::before {
             content: "";
@@ -405,21 +370,21 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(to right, #d1e8d1, #a0c8a0, #d1e8d1);
+            background: linear-gradient(to right, #e7a493, #d88b7a, #e7a493);
             animation: borderFlow 8s linear infinite;
         }
         .timer-value {
             font-family: 'Cormorant Garamond', serif;
             font-size: 3.5rem;
             font-weight: 700;
-            color: #4a6b4a;
+            color: #5c3a37;
             display: block;
             line-height: 1;
             margin-bottom: 8px;
         }
         .timer-label {
             font-size: 1.1rem;
-            color: #6a8a6a;
+            color: #8c635c;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -438,7 +403,7 @@
             max-width: 700px;
             margin: 0 auto 40px;
             line-height: 1.8;
-            color: #5a7a5a;
+            color: #5c3a37;
             position: relative;
             padding: 30px 0;
             opacity: 0;
@@ -446,6 +411,11 @@
             font-family: 'Cormorant Garamond', serif;
             text-align: center;
             width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            border: 1px solid rgba(231, 164, 147, 0.3);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         }
         .invitation-text::before,
         .invitation-text::after {
@@ -453,7 +423,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 6rem;
             position: absolute;
-            color: rgba(141, 185, 141, 0.3);
+            color: rgba(231, 164, 147, 0.3);
             line-height: 1;
             opacity: 0.5;
         }
@@ -471,22 +441,24 @@
         .calendar-section {
             margin: 40px auto;
             max-width: 300px;
-            background: #f8fbf8;
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             position: relative;
             overflow: hidden;
-            border-top: 4px solid #d1e8d1;
+            border-top: 4px solid #e7a493;
             transition: all 0.6s ease;
             transform: translateY(30px);
             opacity: 0;
             animation: fadeInUp 0.8s 1.3s ease-out forwards;
             text-align: center;
+            border: 1px solid rgba(231, 164, 147, 0.3);
+            backdrop-filter: blur(5px);
         }
         .calendar-section:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         .calendar-section::before {
             content: "";
@@ -495,19 +467,19 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(to right, #d1e8d1, #a0c8a0, #d1e8d1);
+            background: linear-gradient(to right, #e7a493, #d88b7a, #e7a493);
             animation: borderFlow 8s linear infinite;
         }
         .calendar-icon {
             font-size: 3rem;
-            color: #8db98d;
+            color: #e7a493;
             margin-bottom: 20px;
             transition: transform 0.5s ease, color 0.5s ease;
         }
         .calendar-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
-            color: #5a7a5a;
+            color: #5c3a37;
             margin-bottom: 15px;
             font-weight: 600;
             position: relative;
@@ -520,11 +492,11 @@
             transform: translateX(-50%);
             width: 50px;
             height: 2px;
-            background: #d1e8d1;
+            background: #e7a493;
         }
         .calendar-date {
             font-size: 1.8rem;
-            color: #6a8a6a;
+            color: #8c635c;
             line-height: 1.6;
             margin-top: 15px;
             font-weight: 500;
@@ -533,8 +505,8 @@
 
         /* Тайминг дня */
         .timing-section {
-            background: linear-gradient(135deg, rgba(248, 251, 248, 0.95), rgba(240, 248, 240, 0.95));
-            border: 2px solid #a0c8a0;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(231, 164, 147, 0.3);
             padding: 40px 30px;
             margin: 40px auto;
             max-width: 800px;
@@ -545,6 +517,7 @@
             transform: translateY(30px);
             opacity: 0;
             animation: fadeInUp 0.8s 1.5s ease-out forwards;
+            backdrop-filter: blur(5px);
         }
         .timing-section::before {
             content: "⌚";
@@ -552,13 +525,13 @@
             top: 10px;
             right: 20px;
             font-size: 3rem;
-            color: rgba(141, 185, 141, 0.15);
+            color: rgba(231, 164, 147, 0.15);
             animation: pulse 3s infinite;
         }
         .timing-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
-            color: #5a7a5a;
+            color: #5c3a37;
             margin-bottom: 30px;
             text-align: center;
             position: relative;
@@ -571,7 +544,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 2px;
-            background: linear-gradient(to right, #d1e8d1, #a0c8a0, #d1e8d1);
+            background: linear-gradient(to right, #e7a493, #d88b7a, #e7a493);
         }
         .timing-grid {
             display: flex;
@@ -580,14 +553,15 @@
             margin-top: 20px;
         }
         .timing-item {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 251, 248, 0.95));
+            background: rgba(255, 255, 255, 0.8);
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e0f0e0;
+            border: 1px solid rgba(231, 164, 147, 0.3);
             flex: 1;
             min-width: 300px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
         }
         .timing-item:hover {
             transform: translateY(-3px);
@@ -595,14 +569,14 @@
         }
         .timing-time {
             font-size: 1.8rem;
-            color: #4a6b4a;
+            color: #5c3a37;
             font-weight: 600;
             margin-bottom: 15px;
             font-family: 'Cormorant Garamond', serif;
         }
         .timing-event {
             font-size: 1.5rem;
-            color: #6a8c6a;
+            color: #8c635c;
             margin-bottom: 20px;
         }
         .timing-location {
@@ -613,16 +587,16 @@
         }
         .timing-location i {
             font-size: 1.8rem;
-            color: #8db98d;
+            color: #e7a493;
         }
         .timing-address {
             font-size: 1.3rem;
-            color: #5a7a5a;
+            color: #8c635c;
             line-height: 1.6;
             transition: all 0.3s ease;
         }
         .timing-address:hover {
-            color: #8db98d;
+            color: #e7a493;
             transform: translateY(-2px);
         }
         .timing-photos {
@@ -638,13 +612,14 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            background: #f8fbf8;
+            background: #f8d6cd;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #8db98d;
+            color: #e7a493;
             cursor: pointer;
             transition: all 0.5s ease;
+            border: 1px solid rgba(231, 164, 147, 0.3);
         }
         .timing-photo:hover {
             transform: translateY(-5px);
@@ -670,17 +645,18 @@
             align-items: stretch;
         }
         .gift-card, .dress-card {
-            background: linear-gradient(135deg, #f8fbf8, #f0f8f0);
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             position: relative;
             overflow: hidden;
-            border: 2px solid #d1e8d1;
+            border: 1px solid rgba(231, 164, 147, 0.3);
             transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             flex: 1;
             min-width: 300px;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
         .gift-card:hover, .dress-card:hover {
             transform: translateY(-10px);
@@ -693,23 +669,23 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(to right, #d1e8d1, #a0c8a0, #d1e8d1);
+            background: linear-gradient(to right, #e7a493, #d88b7a, #e7a493);
             animation: borderFlow 8s linear infinite;
         }
         .gift-icon, .dress-icon {
             font-size: 3rem;
-            color: #8db98d;
+            color: #e7a493;
             margin-bottom: 20px;
             transition: transform 0.5s ease, color 0.5s ease;
         }
         .gift-card:hover .gift-icon, .dress-card:hover .dress-icon {
             transform: scale(1.2);
-            color: #4a6b4a;
+            color: #5c3a37;
         }
         .gift-title, .dress-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
-            color: #5a7a5a;
+            color: #5c3a37;
             margin-bottom: 20px;
             font-weight: 600;
             position: relative;
@@ -722,19 +698,19 @@
             transform: translateX(-50%);
             width: 50px;
             height: 2px;
-            background: #d1e8d1;
+            background: #e7a493;
         }
         .gift-text, .dress-text {
             font-size: 1.4rem;
-            color: #6a8a6a;
+            color: #8c635c;
             line-height: 1.7;
             margin-top: 20px;
         }
 
         /* Ведущий */
         .host-section {
-            background: linear-gradient(135deg, rgba(248, 251, 248, 0.95), rgba(240, 248, 240, 0.95));
-            border: 2px solid #a0c8a0;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(231, 164, 147, 0.3);
             padding: 40px;
             margin: 50px auto;
             max-width: 700px;
@@ -749,6 +725,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            backdrop-filter: blur(5px);
         }
         .host-section::before {
             content: "🎤";
@@ -756,18 +733,18 @@
             top: 10px;
             right: 20px;
             font-size: 3rem;
-            color: rgba(141, 185, 141, 0.15);
+            color: rgba(231, 164, 147, 0.15);
             animation: pulse 3s infinite;
         }
         .host-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
-            color: #5a7a5a;
+            color: #5c3a37;
             margin-bottom: 20px;
         }
         .host-text {
             font-size: 1.4rem;
-            color: #6a8c6a;
+            color: #8c635c;
             line-height: 1.7;
             margin-bottom: 30px;
             max-width: 600px;
@@ -777,27 +754,27 @@
         }
         .host-contact {
             font-size: 1.8rem;
-            color: #4a6b4a;
+            color: #5c3a37;
             margin-top: 20px;
             font-weight: 600;
             font-family: 'Cormorant Garamond', serif;
             text-align: center;
         }
         .host-contact a {
-            color: #8db98d;
+            color: #e7a493;
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-block;
             margin-top: 10px;
             padding: 10px 20px;
             border-radius: 30px;
-            background: rgba(141, 185, 141, 0.1);
+            background: rgba(231, 164, 147, 0.1);
         }
         .host-contact a:hover {
             color: white;
-            background: #8db98d;
+            background: #e7a493;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(141, 185, 141, 0.4);
+            box-shadow: 0 5px 15px rgba(231, 164, 147, 0.3);
         }
 
         /* Подпись */
@@ -812,16 +789,15 @@
         .signature {
             font-family: 'Parisienne', cursive;
             font-size: 3.5rem;
-            color: #8db98d;
+            color: #e7a493;
             margin-top: 30px;
             display: inline-block;
             position: relative;
             padding: 0 50px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             transition: all 0.5s ease;
         }
         .signature:hover {
-            color: #4a6b4a;
+            color: #5c3a37;
             transform: scale(1.05);
         }
         .signature::before,
@@ -831,7 +807,7 @@
             top: 50%;
             width: 40px;
             height: 2px;
-            background: #d1e8d1;
+            background: #e7a493;
             transition: all 0.5s ease;
         }
         .signature::before {
@@ -843,7 +819,7 @@
         .signature:hover::before,
         .signature:hover::after {
             width: 60px;
-            background: #a0c8a0;
+            background: #d88b7a;
         }
 
         /* Анимации */
@@ -860,17 +836,17 @@
             100% { transform: scale(1); opacity: 1; }
         }
         @keyframes sealPulse {
-            0% { 
-                transform: translate(-50%, -50%) scale(1); 
-                box-shadow: 0 0 0 rgba(141, 185, 141, 0.4);
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: 0 0 0 rgba(231, 164, 147, 0.4);
             }
-            50% { 
-                transform: translate(-50%, -50%) scale(1.05); 
-                box-shadow: 0 0 20px rgba(141, 185, 141, 0.5);
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+                box-shadow: 0 0 20px rgba(231, 164, 147, 0.5);
             }
-            100% { 
-                transform: translate(-50%, -50%) scale(1.1); 
-                box-shadow: 0 0 30px rgba(141, 185, 141, 0.6);
+            100% {
+                transform: translate(-50%, -50%) scale(1.1);
+                box-shadow: 0 0 30px rgba(231, 164, 147, 0.6);
             }
         }
         @keyframes borderFlow {
@@ -890,26 +866,12 @@
             100% { transform: scale(1); }
         }
 
-        /* Улучшенные медиа-запросы для адаптации под iPhone */
+        /* Адаптивные стили */
         @media (max-width: 768px) {
-            body {
-                padding: 0;
-            }
-            .container {
-                padding: 0;
-            }
-            .container.invitation-open {
-                padding: 5px;
-            }
-
-            /* Конверт */
             .envelope-container {
                 max-width: 95vw;
                 height: 280px;
                 margin-bottom: 20px;
-            }
-            .envelope-front {
-                padding: 0 3vw;
             }
             .seal {
                 width: 50px;
@@ -917,1017 +879,81 @@
                 font-size: 1.4rem;
                 top: 35%;
             }
-            .envelope-content {
-                top: 55%;
-            }
-            .names {
-                font-size: 1.1em;
-                margin-bottom: 4px;
-            }
-            .invitation-title {
-                font-size: 0.9em;
-                margin-bottom: 4px;
-            }
-            .open-text {
-                font-size: 0.8em;
-            }
-
-            /* Приглашение */
             .invitation-container {
                 max-width: 98vw;
                 padding: 20px 10px;
                 margin: 5px auto;
-                border-radius: 15px;
-            }
-            .invitation-header {
-                margin-bottom: 20px;
-                padding: 15px 0;
             }
             .invitation-names {
                 font-size: 2.8rem;
-                margin: 10px 0;
-                letter-spacing: 1px;
             }
-            .date {
-                font-size: 1.4rem;
-                margin-top: 5px;
+            .combined-photo {
+                height: 300px;
             }
-
-            /* Фото пары */
-            .couple-section {
-                margin: 20px 0;
-            }
-            .couple-title {
+            .combined-label {
                 font-size: 2.2rem;
-                margin-bottom: 20px;
-            }
-            .couple-title::before,
-            .couple-title::after {
-                font-size: 1rem;
-            }
-            .couple-title::before {
-                left: -25px;
-            }
-            .couple-title::after {
-                right: -25px;
-            }
-            .couple-photos {
-                gap: 12px;
-                max-width: 100%;
-            }
-            .couple-photo {
-                width: 42% !important;
-                max-width: 140px;
-                height: 180px;
-                border-radius: 10px;
-            }
-            .couple-label {
-                bottom: 10px;
-                padding: 6px 15px;
-                font-size: 1.4rem;
-            }
-
-            /* Таймер */
-            .countdown-section {
-                margin: 25px 0;
-            }
-            .countdown-title {
-                font-size: 1.8rem;
-                margin-bottom: 10px;
-            }
-            .countdown-date {
-                font-size: 1.2rem;
-                margin-bottom: 20px;
-            }
-            .countdown-timer {
-                display: grid !important;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 6px;
-                width: 100%;
+                padding: 10px 30px;
             }
             .timer-item {
-                min-width: auto !important;
-                width: 100%;
-                padding: 12px 6px !important;
-                border-radius: 8px;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 1px solid #d1e8d1 !important;
-                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1) !important;
+                min-width: auto;
+                padding: 15px 10px;
             }
             .timer-value {
-                font-size: 1.8rem !important;
-                margin-bottom: 4px;
-                color: #4a6b4a !important;
-            }
-            .timer-label {
-                font-size: 0.75rem !important;
-                color: #6a8a6a !important;
-                font-weight: 500;
-            }
-
-            /* Текст приглашения */
-            .content {
-                padding: 15px 10px 20px;
-            }
-            .invitation-text {
-                font-size: 1.2rem !important;
-                padding: 20px 5px !important;
-                margin-bottom: 25px;
-                line-height: 1.6;
-                text-align: center !important;
-            }
-            .invitation-text::before,
-            .invitation-text::after {
-                display: none;
-            }
-
-            /* Календарик */
-            .calendar-section {
-                margin: 25px auto;
-                padding: 20px;
-                border-radius: 10px;
-                text-align: center !important;
-            }
-            .calendar-icon {
                 font-size: 2.5rem;
-                margin-bottom: 15px;
-            }
-            .calendar-title {
-                font-size: 1.5rem;
-                margin-bottom: 10px;
-            }
-            .calendar-date {
-                font-size: 1.5rem;
-                margin-top: 10px;
-            }
-
-            /* Тайминг дня */
-            .timing-section {
-                padding: 25px 15px;
-                margin: 25px auto;
-                border-radius: 12px !important;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 2px solid #a0c8a0 !important;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
-            }
-            .timing-title {
-                font-size: 1.8rem;
-                margin-bottom: 20px;
-                text-align: center !important;
-            }
-            .timing-grid {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 15px;
-                margin-top: 15px;
-                align-items: center !important;
-            }
-            .timing-item {
-                width: 100% !important;
-                max-width: 400px !important;
-                padding: 20px 18px !important;
-                border-radius: 12px;
-                background: #ffffff !important;
-                border: 1px solid #e0f0e0 !important;
-                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
-                text-align: center !important;
-            }
-            .timing-time {
-                font-size: 1.6rem !important;
-                margin-bottom: 10px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-            }
-            .timing-event {
-                font-size: 1.4rem !important;
-                margin-bottom: 15px;
-                color: #6a8c6a !important;
-                font-weight: 500 !important;
-            }
-            .timing-location {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 8px;
-                margin-top: 15px;
-            }
-            .timing-location i {
-                font-size: 1.6rem !important;
-                color: #8db98d !important;
-            }
-            .timing-address {
-                font-size: 1.2rem !important;
-                line-height: 1.5;
-                color: #5a7a5a !important;
-                text-align: center !important;
-                transition: all 0.3s ease !important;
-            }
-            .timing-address:hover {
-                color: #8db98d !important;
-                transform: translateY(-2px) !important;
-            }
-            .timing-photos {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 15px;
-                margin-top: 25px;
-                align-items: center !important;
             }
             .timing-photo {
-                width: 100% !important;
-                max-width: 350px !important;
+                min-width: 150px;
                 height: 150px;
-                border-radius: 10px;
-                background: #f8fbf8 !important;
-                border: 1px solid #e0f0e0 !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-
-            /* Подарки и дресс-код */
-            .gift-dress-section {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 20px;
-                margin: 30px auto;
-                align-items: center !important;
-            }
-            .gift-card, .dress-card {
-                width: 100% !important;
-                max-width: 450px !important;
-                padding: 25px 20px !important;
-                border-radius: 15px;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 2px solid #d1e8d1 !important;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
-                text-align: center !important;
-            }
-            .gift-icon, .dress-icon {
-                font-size: 3rem;
-                margin-bottom: 18px;
-                color: #8db98d !important;
-            }
-            .gift-title, .dress-title {
-                font-size: 1.8rem !important;
-                margin-bottom: 15px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-                position: relative !important;
-            }
-            .gift-title::after, .dress-title::after {
-                content: "" !important;
-                position: absolute !important;
-                bottom: -8px !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                width: 60px !important;
-                height: 2px !important;
-                background: #d1e8d1 !important;
-            }
-            .gift-text, .dress-text {
-                font-size: 1.3rem !important;
-                line-height: 1.7;
-                margin-top: 15px;
-                color: #6a8c6a !important;
-                text-align: center !important;
-            }
-
-            /* Ведущий */
-            .host-section {
-                padding: 25px 18px !important;
-                margin: 30px auto;
-                border-radius: 12px;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 2px solid #a0c8a0 !important;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
-            }
-            .host-title {
-                font-size: 1.8rem;
-                margin-bottom: 15px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-            }
-            .host-text {
-                font-size: 1.3rem !important;
-                line-height: 1.6;
-                margin-bottom: 20px;
-                color: #6a8c6a !important;
-            }
-            .host-contact {
-                font-size: 1.5rem;
-                margin-top: 15px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-            }
-            .host-contact a {
-                font-size: 1.3rem !important;
-                padding: 10px 18px !important;
-                background: #8db98d !important;
-                color: white !important;
-                border-radius: 25px !important;
-                text-decoration: none !important;
-                display: inline-block !important;
-                margin-top: 8px !important;
-                transition: all 0.3s ease !important;
-            }
-            .host-contact a:hover {
-                background: #4a6b4a !important;
-                transform: translateY(-2px) !important;
-            }
-
-            /* Подпись */
-            .signature-section {
-                margin: 30px 0 20px;
-                padding: 15px;
-            }
-            .signature {
-                font-size: 2.5rem;
-                padding: 0 30px;
             }
         }
         @media (max-width: 480px) {
-            /* Конверт */
             .envelope-container {
-                max-width: 92vw;
                 height: 250px;
-                margin-bottom: 15px;
-            }
-            .seal {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-                top: 32%;
-            }
-            .envelope-content {
-                top: 52%;
-            }
-            .names {
-                font-size: 1em;
-                margin-bottom: 3px;
-            }
-            .invitation-title {
-                font-size: 0.8em;
-                margin-bottom: 3px;
-            }
-            .open-text {
-                font-size: 0.7em;
-            }
-
-            /* Приглашение */
-            .invitation-container {
-                max-width: 96vw;
-                padding: 15px 8px;
-                margin: 3px auto;
-                border-radius: 12px;
-            }
-            .invitation-header {
-                margin-bottom: 15px;
-                padding: 10px 0;
             }
             .invitation-names {
                 font-size: 2.2rem;
-                margin: 8px 0;
-                letter-spacing: 0.5px;
             }
-            .date {
-                font-size: 1.2rem;
-                margin-top: 3px;
+            .combined-photo {
+                height: 250px;
             }
-
-            /* Фото пары */
-            .couple-section {
-                margin: 15px 0;
-            }
-            .couple-title {
+            .combined-label {
                 font-size: 1.8rem;
-                margin-bottom: 15px;
-            }
-            .couple-title::before,
-            .couple-title::after {
-                font-size: 0.8rem;
-            }
-            .couple-title::before {
-                left: -20px;
-            }
-            .couple-title::after {
-                right: -20px;
-            }
-            .couple-photos {
-                gap: 8px;
-            }
-            .couple-photo {
-                width: 45% !important;
-                max-width: 120px;
-                height: 150px;
-                border-radius: 8px;
-            }
-            .couple-label {
-                bottom: 8px;
-                padding: 4px 10px;
-                font-size: 1.2rem;
-            }
-
-            /* Таймер */
-            .countdown-section {
-                margin: 20px 0;
-            }
-            .countdown-title {
-                font-size: 1.5rem;
-                margin-bottom: 8px;
-            }
-            .countdown-date {
-                font-size: 1rem;
-                margin-bottom: 15px;
+                padding: 8px 25px;
+                bottom: 20px;
             }
             .countdown-timer {
-                gap: 5px;
+                gap: 10px;
             }
             .timer-item {
-                padding: 10px 4px !important;
-                border-radius: 6px;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 1px solid #d1e8d1 !important;
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+                padding: 12px 8px;
+                min-width: 70px;
             }
             .timer-value {
-                font-size: 1.4rem !important;
-                margin-bottom: 3px;
-                color: #4a6b4a !important;
+                font-size: 2rem;
             }
             .timer-label {
-                font-size: 0.65rem !important;
-                color: #6a8a6a !important;
-                font-weight: 500;
-            }
-
-            /* Текст приглашения */
-            .content {
-                padding: 12px 8px 15px;
-            }
-            .invitation-text {
-                font-size: 1.1rem !important;
-                padding: 15px 3px !important;
-                margin-bottom: 20px;
-                line-height: 1.5;
-                text-align: center !important;
-            }
-
-            /* Календарик */
-            .calendar-section {
-                margin: 20px auto;
-                padding: 15px;
-                border-radius: 8px;
-                text-align: center !important;
-            }
-            .calendar-icon {
-                font-size: 2rem;
-                margin-bottom: 10px;
-            }
-            .calendar-title {
-                font-size: 1.3rem;
-                margin-bottom: 8px;
-            }
-            .calendar-date {
-                font-size: 1.3rem;
-                margin-top: 8px;
-            }
-
-            /* Тайминг дня */
-            .timing-section {
-                padding: 20px 12px;
-                margin: 20px auto;
-                border-radius: 10px !important;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 2px solid #a0c8a0 !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
-            }
-            .timing-title {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-                text-align: center !important;
-            }
-            .timing-grid {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 12px;
-                margin-top: 12px;
-                align-items: center !important;
-            }
-            .timing-item {
-                width: 100% !important;
-                max-width: 350px !important;
-                padding: 18px 15px !important;
-                border-radius: 10px;
-                background: #ffffff !important;
-                border: 1px solid #e0f0e0 !important;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
-                text-align: center !important;
-            }
-            .timing-time {
-                font-size: 1.4rem !important;
-                margin-bottom: 8px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-            }
-            .timing-event {
-                font-size: 1.3rem !important;
-                margin-bottom: 12px;
-                color: #6a8c6a !important;
-                font-weight: 500 !important;
-            }
-            .timing-location {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 6px;
-                margin-top: 12px;
-            }
-            .timing-location i {
-                font-size: 1.4rem !important;
-                color: #8db98d !important;
-            }
-            .timing-address {
-                font-size: 1.1rem !important;
-                line-height: 1.4;
-                color: #5a7a5a !important;
-                text-align: center !important;
-                transition: all 0.3s ease !important;
-            }
-            .timing-address:hover {
-                color: #8db98d !important;
-                transform: translateY(-2px) !important;
-            }
-            .timing-photos {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 12px;
-                margin-top: 20px;
-                align-items: center !important;
-            }
-            .timing-photo {
-                width: 100% !important;
-                max-width: 300px !important;
-                height: 130px;
-                border-radius: 8px;
-                background: #f8fbf8 !important;
-                border: 1px solid #e0f0e0 !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            .timing-photos {
-                gap: 8px;
-                margin-top: 15px;
-            }
-            .timing-photo {
-                height: 100px;
-                border-radius: 6px;
-            }
-
-            /* Подарки и дресс-код */
-            .gift-dress-section {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 15px;
-                margin: 25px auto;
-                align-items: center !important;
-            }
-            .gift-card, .dress-card {
-                width: 100% !important;
-                max-width: 380px !important;
-                padding: 20px 18px !important;
-                border-radius: 12px;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 2px solid #d1e8d1 !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
-                text-align: center !important;
-            }
-            .gift-icon, .dress-icon {
-                font-size: 2.5rem;
-                margin-bottom: 12px;
-                color: #8db98d !important;
-            }
-            .gift-title, .dress-title {
-                font-size: 1.5rem !important;
-                margin-bottom: 10px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-                position: relative !important;
-            }
-            .gift-title::after, .dress-title::after {
-                content: "" !important;
-                position: absolute !important;
-                bottom: -6px !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                width: 50px !important;
-                height: 2px !important;
-                background: #d1e8d1 !important;
-            }
-            .gift-text, .dress-text {
-                font-size: 1.2rem !important;
-                line-height: 1.6;
-                margin-top: 10px;
-                color: #6a8c6a !important;
-                text-align: center !important;
-            }
-
-            /* Ведущий */
-            .host-section {
-                padding: 20px 15px !important;
-                margin: 25px auto;
-                border-radius: 10px;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 2px solid #a0c8a0 !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
-            }
-            .host-title {
-                font-size: 1.5rem;
-                margin-bottom: 12px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-            }
-            .host-text {
-                font-size: 1.2rem !important;
-                line-height: 1.5;
-                margin-bottom: 15px;
-                color: #6a8c6a !important;
-            }
-            .host-contact {
-                font-size: 1.3rem;
-                margin-top: 12px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-            }
-            .host-contact a {
-                font-size: 1.2rem !important;
-                padding: 8px 15px !important;
-                background: #8db98d !important;
-                color: white !important;
-                border-radius: 20px !important;
-                text-decoration: none !important;
-                display: inline-block !important;
-                margin-top: 6px !important;
-                transition: all 0.3s ease !important;
-            }
-            .host-contact a:hover {
-                background: #4a6b4a !important;
-                transform: translateY(-2px) !important;
-            }
-
-            /* Подпись */
-            .signature-section {
-                margin: 25px 0 15px;
-                padding: 12px;
-            }
-            .signature {
-                font-size: 2.2rem;
-                padding: 0 25px;
+                font-size: 0.9rem;
             }
         }
         @media (max-width: 350px) {
-            /* Конверт */
-            .envelope-container {
-                max-width: 90vw;
-                height: 220px;
-                margin-bottom: 10px;
+            .combined-photo {
+                height: 200px;
             }
-            .seal {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-                top: 30%;
-            }
-            .envelope-content {
-                top: 50%;
-            }
-            .names {
-                font-size: 0.9em;
-                margin-bottom: 2px;
-            }
-            .invitation-title {
-                font-size: 0.7em;
-                margin-bottom: 2px;
-            }
-            .open-text {
-                font-size: 0.6em;
-            }
-
-            /* Приглашение */
-            .invitation-container {
-                max-width: 94vw;
-                padding: 12px 6px;
-                margin: 2px auto;
-                border-radius: 10px;
-            }
-            .invitation-header {
-                margin-bottom: 12px;
-                padding: 8px 0;
-            }
-            .invitation-names {
-                font-size: 1.8rem;
-                margin: 6px 0;
-                letter-spacing: 0.3px;
-            }
-            .date {
-                font-size: 1rem;
-                margin-top: 2px;
-            }
-
-            /* Фото пары */
-            .couple-section {
-                margin: 12px 0;
-            }
-            .couple-title {
+            .combined-label {
                 font-size: 1.5rem;
-                margin-bottom: 12px;
-            }
-            .couple-title::before,
-            .couple-title::after {
-                font-size: 0.7rem;
-            }
-            .couple-title::before {
-                left: -15px;
-            }
-            .couple-title::after {
-                right: -15px;
-            }
-            .couple-photos {
-                gap: 6px;
-            }
-            .couple-photo {
-                width: 42% !important;
-                max-width: 100px;
-                height: 120px;
-                border-radius: 6px;
-            }
-            .couple-label {
-                bottom: 6px;
-                padding: 3px 8px;
-                font-size: 1rem;
-            }
-
-            /* Таймер */
-            .countdown-section {
-                margin: 15px 0;
-            }
-            .countdown-title {
-                font-size: 1.3rem;
-                margin-bottom: 6px;
-            }
-            .countdown-date {
-                font-size: 0.9rem;
-                margin-bottom: 12px;
-            }
-            .countdown-timer {
-                gap: 3px;
+                padding: 6px 20px;
+                bottom: 15px;
             }
             .timer-item {
-                padding: 8px 3px !important;
-                border-radius: 5px;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 1px solid #d1e8d1 !important;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+                min-width: 60px;
+                padding: 10px 5px;
             }
             .timer-value {
-                font-size: 1.2rem !important;
-                margin-bottom: 2px;
-                color: #4a6b4a !important;
-            }
-            .timer-label {
-                font-size: 0.55rem !important;
-                color: #6a8a6a !important;
-                font-weight: 500;
-            }
-
-            /* Текст приглашения */
-            .content {
-                padding: 10px 6px 12px;
-            }
-            .invitation-text {
-                font-size: 1rem !important;
-                padding: 12px 2px !important;
-                margin-bottom: 15px;
-                line-height: 1.4;
-                text-align: center !important;
-            }
-
-            /* Календарик */
-            .calendar-section {
-                margin: 15px auto;
-                padding: 12px;
-                border-radius: 6px;
-                text-align: center !important;
-            }
-            .calendar-icon {
-                font-size: 1.8rem;
-                margin-bottom: 8px;
-            }
-            .calendar-title {
-                font-size: 1.1rem;
-                margin-bottom: 6px;
-            }
-            .calendar-date {
-                font-size: 1.1rem;
-                margin-top: 6px;
-            }
-
-            /* Тайминг дня */
-            .timing-section {
-                padding: 15px 10px;
-                margin: 15px auto;
-                border-radius: 8px !important;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 2px solid #a0c8a0 !important;
-                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1) !important;
-            }
-            .timing-title {
-                font-size: 1.3rem;
-                margin-bottom: 12px;
-                text-align: center !important;
-            }
-            .timing-grid {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 10px;
-                margin-top: 10px;
-                align-items: center !important;
-            }
-            .timing-item {
-                width: 100% !important;
-                max-width: 280px !important;
-                padding: 15px 12px !important;
-                border-radius: 8px;
-                background: #ffffff !important;
-                border: 1px solid #e0f0e0 !important;
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
-                text-align: center !important;
-            }
-            .timing-time {
-                font-size: 1.2rem !important;
-                margin-bottom: 6px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-            }
-            .timing-event {
-                font-size: 1.1rem !important;
-                margin-bottom: 8px;
-                color: #6a8c6a !important;
-                font-weight: 500 !important;
-            }
-            .timing-location {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 5px;
-                margin-top: 8px;
-            }
-            .timing-location i {
-                font-size: 1.2rem !important;
-                color: #8db98d !important;
-            }
-            .timing-address {
-                font-size: 1rem !important;
-                line-height: 1.3;
-                color: #5a7a5a !important;
-                text-align: center !important;
-                transition: all 0.3s ease !important;
-            }
-            .timing-address:hover {
-                color: #8db98d !important;
-                transform: translateY(-2px) !important;
-            }
-            .timing-photos {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 10px;
-                margin-top: 15px;
-                align-items: center !important;
-            }
-            .timing-photo {
-                width: 100% !important;
-                max-width: 250px !important;
-                height: 110px;
-                border-radius: 6px;
-                background: #f8fbf8 !important;
-                border: 1px solid #e0f0e0 !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            .timing-photos {
-                gap: 6px;
-                margin-top: 12px;
-            }
-            .timing-photo {
-                height: 80px;
-                border-radius: 4px;
-            }
-
-            /* Подарки и дресс-код */
-            .gift-dress-section {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 12px;
-                margin: 20px auto;
-                align-items: center !important;
-            }
-            .gift-card, .dress-card {
-                width: 100% !important;
-                max-width: 300px !important;
-                padding: 18px 15px !important;
-                border-radius: 10px;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 2px solid #d1e8d1 !important;
-                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1) !important;
-                text-align: center !important;
-            }
-            .gift-icon, .dress-icon {
-                font-size: 2.2rem;
-                margin-bottom: 10px;
-                color: #8db98d !important;
-            }
-            .gift-title, .dress-title {
-                font-size: 1.3rem !important;
-                margin-bottom: 8px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-                position: relative !important;
-            }
-            .gift-title::after, .dress-title::after {
-                content: "" !important;
-                position: absolute !important;
-                bottom: -5px !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                width: 40px !important;
-                height: 2px !important;
-                background: #d1e8d1 !important;
-            }
-            .gift-text, .dress-text {
-                font-size: 1.1rem !important;
-                line-height: 1.5;
-                margin-top: 8px;
-                color: #6a8c6a !important;
-                text-align: center !important;
-            }
-
-            /* Ведущий */
-            .host-section {
-                padding: 15px 12px !important;
-                margin: 20px auto;
-                border-radius: 8px;
-                background: linear-gradient(135deg, #ffffff, #f8fbf8) !important;
-                border: 2px solid #a0c8a0 !important;
-                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1) !important;
-            }
-            .host-title {
-                font-size: 1.3rem;
-                margin-bottom: 10px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-            }
-            .host-text {
-                font-size: 1.1rem !important;
-                line-height: 1.4;
-                margin-bottom: 12px;
-                color: #6a8c6a !important;
-            }
-            .host-contact {
-                font-size: 1.1rem;
-                margin-top: 10px;
-                color: #4a6b4a !important;
-                font-weight: 600 !important;
-            }
-            .host-contact a {
-                font-size: 1.1rem !important;
-                padding: 6px 12px !important;
-                background: #8db98d !important;
-                color: white !important;
-                border-radius: 15px !important;
-                text-decoration: none !important;
-                display: inline-block !important;
-                margin-top: 5px !important;
-                transition: all 0.3s ease !important;
-            }
-            .host-contact a:hover {
-                background: #4a6b4a !important;
-                transform: translateY(-2px) !important;
-            }
-
-            /* Подпись */
-            .signature-section {
-                margin: 20px 0 12px;
-                padding: 10px;
-            }
-            .signature {
-                font-size: 1.8rem;
-                padding: 0 20px;
+                font-size: 1.6rem;
             }
         }
 
-        /* Модальное окно для фотографий */
+        /* Модальное окно */
         .modal {
             display: none;
             position: fixed;
@@ -1966,22 +992,6 @@
             color: #bbb;
             text-decoration: none;
         }
-
-        /* Стили для видимых фотографий */
-        .couple-photo img,
-        .timing-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: inherit;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .couple-photo img:hover,
-        .timing-photo img:hover {
-            transform: scale(1.05);
-        }
-
     </style>
 </head>
 <body>
@@ -2015,17 +1025,12 @@
                 <div class="date">21 сентября 2025 года</div>
             </div>
 
-            <!-- Фото пары -->
-            <div class="couple-section">
-                <h2 class="couple-title">Кирилл + Анна</h2>
-                <div class="couple-photos">
-                    <div class="couple-photo">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=280&h=350&q=80" alt="Детская фотография Кирилла" onclick="openModal(this.src)">
-                        <div class="couple-label">Жених</div>
-                    </div>
-                    <div class="couple-photo">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=280&h=350&q=80" alt="Детская фотография Анны" onclick="openModal(this.src)">
-                        <div class="couple-label">Невеста</div>
+            <!-- Комбинированное фото -->
+            <div class="combined-section">
+                <div class="combined-photo-container">
+                    <div class="combined-photo">
+                        <img src="main_image.jpg" alt="Детские фотографии Кирилла и Ани" onclick="openModal(this.src)">
+<!--                        <div class="combined-label">Кирилл + Аня = ❤️</div>-->
                     </div>
                 </div>
             </div>
@@ -2188,7 +1193,6 @@
 
             // Функция открытия карт
             function openMap(address) {
-                // Открываем карту в новом окне с поиском адреса
                 const encodedAddress = encodeURIComponent(address);
                 const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
                 window.open(mapUrl, '_blank');
@@ -2214,7 +1218,6 @@
                 }
             }
 
-            // Закрытие модального окна по клавише Escape
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && modal.style.display === 'block') {
                     modal.style.display = 'none';
@@ -2242,11 +1245,9 @@
                 }
             }
 
-            // Обновляем таймер каждую секунду
             setInterval(updateCountdown, 1000);
             updateCountdown();
         });
     </script>
-
 </body>
 </html>
