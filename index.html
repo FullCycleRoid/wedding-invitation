@@ -23,6 +23,7 @@
             padding: 20px;
             overflow-x: hidden;
             transition: all 0.7s cubic-bezier(0.4,0,0.2,1);
+            position: relative;
         }
         body.invitation-open {
             align-items: flex-start;
@@ -38,12 +39,47 @@
             justify-content: center;
             position: relative;
             transition: all 0.7s cubic-bezier(0.4,0,0.2,1);
+            z-index: 100;
         }
         .container.invitation-open {
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
             padding: 20px;
+        }
+
+        /* Фоновые анимации */
+        .background-animations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(178, 115, 119, 0.4);
+            animation: float 15s infinite linear;
+            opacity: 0;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(178, 115, 119, 0.1);
+            animation: float 20s infinite linear;
+            opacity: 0;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 215, 0, 0.7);
+            animation: confetti-fall 5s linear forwards;
+            opacity: 0;
         }
 
         /* Конверт */
@@ -267,6 +303,11 @@
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             background: linear-gradient(to bottom, #f1d8d3, #cfa4a6);
+            transform: perspective(1000px) rotateY(0deg);
+            transition: transform 0.5s ease;
+        }
+        .combined-photo-container:hover {
+            transform: perspective(1000px) rotateY(5deg);
         }
         .combined-photo {
             width: 100%;
@@ -883,6 +924,59 @@
             75% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        @keyframes fireworks {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(3);
+                opacity: 0;
+            }
+        }
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-40px) rotate(360deg);
+                opacity: 0;
+            }
+        }
 
         /* Адаптивные стили */
         @media (max-width: 768px) {
@@ -1188,6 +1282,9 @@
     </style>
 </head>
 <body>
+    <!-- Анимированный фон -->
+    <div class="background-animations" id="background-animations"></div>
+
     <div class="container" id="main-container">
         <!-- Конверт -->
         <div class="envelope-container" id="envelope">
@@ -1203,7 +1300,7 @@
                         <span>Анна</span>
                     </div>
                     <div class="invitation-title">Приглашение на свадьбу</div>
-                    <div class="open-text">Нажмите на печать, чтобы открыть</div>
+                    <div class="open-text">Нажмите на конверт, чтобы открыть</div>
                 </div>
             </div>
             <div class="envelope envelope-back"></div>
@@ -1343,8 +1440,8 @@
                     </p>
                     <div class="host-contact">
                         Томас<br>
-                        <a href="https://instagram.com/thomas_insta" target="_blank" style="display:inline-block;margin-top:10px;padding:8px 18px;background:#b27377;color:#fff;border-radius:24px;text-decoration:none;font-size:1rem;transition:background 0.2s;">
-                            <i class="fab fa-instagram" style="margin-right:8px;"></i>Instagram
+                        <a href="https://wa.me/79111234567" target="_blank" style="display:inline-block;margin-top:10px;padding:8px 18px;background:#25D366;color:#fff;border-radius:24px;text-decoration:none;font-size:1rem;transition:background 0.2s;">
+                            <i class="fab fa-whatsapp" style="margin-right:8px;"></i>WhatsApp
                         </a>
                     </div>
                 </div>
@@ -1402,11 +1499,95 @@
             const invitation = document.getElementById('invitation');
             const seal = document.getElementById('seal');
             const container = document.getElementById('main-container');
+            const backgroundAnimations = document.getElementById('background-animations');
+
+            // Создаем плавающие элементы для фона
+            function createFloatingElements() {
+                const heartColors = ['#ff6b6b', '#ff8e8e', '#ffb7b7', '#ff9aa2', '#ffb7c5'];
+                const circleColors = ['rgba(178, 115, 119, 0.1)', 'rgba(207, 164, 166, 0.1)', 'rgba(241, 216, 211, 0.1)'];
+
+                // Создаем сердечки
+                for (let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '❤';
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.fontSize = `${Math.random() * 20 + 10}px`;
+                    heart.style.color = heartColors[Math.floor(Math.random() * heartColors.length)];
+                    heart.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                    heart.style.animationDelay = `${Math.random() * 5}s`;
+                    backgroundAnimations.appendChild(heart);
+                }
+
+                // Создаем кружочки
+                for (let i = 0; i < 15; i++) {
+                    const circle = document.createElement('div');
+                    circle.classList.add('circle');
+                    const size = Math.random() * 30 + 10;
+                    circle.style.width = `${size}px`;
+                    circle.style.height = `${size}px`;
+                    circle.style.left = `${Math.random() * 100}vw`;
+                    circle.style.backgroundColor = circleColors[Math.floor(Math.random() * circleColors.length)];
+                    circle.style.animationDuration = `${Math.random() * 25 + 15}s`;
+                    circle.style.animationDelay = `${Math.random() * 5}s`;
+                    backgroundAnimations.appendChild(circle);
+                }
+            }
+
+            // Анимация фейерверка
+            function createFireworks() {
+                const firework = document.createElement('div');
+                firework.style.position = 'fixed';
+                firework.style.width = '200px';
+                firework.style.height = '200px';
+                firework.style.borderRadius = '50%';
+                firework.style.background = 'radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(178,115,119,0) 70%)';
+                firework.style.pointerEvents = 'none';
+                firework.style.zIndex = '2';
+                firework.style.left = `${Math.random() * 100}%`;
+                firework.style.top = `${Math.random() * 100}%`;
+                firework.style.animation = 'fireworks 1.5s forwards';
+                document.body.appendChild(firework);
+
+                setTimeout(() => {
+                    firework.remove();
+                }, 1500);
+            }
+
+            // Анимация сердечек при открытии
+            function createHeartsAnimation() {
+                for (let i = 0; i < 30; i++) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '❤';
+                    heart.style.position = 'fixed';
+                    heart.style.zIndex = '100';
+                    heart.style.fontSize = '24px';
+                    heart.style.color = '#ff6b6b';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.transform = 'translate(-50%, -50%)';
+                    heart.style.animation = `floatHeart ${Math.random() * 2 + 1}s ease-out forwards`;
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 3000);
+                }
+            }
 
             function showInvitation() {
                 invitation.classList.add('show');
                 document.body.classList.add('invitation-open');
                 container.classList.add('invitation-open');
+
+                // Запускаем анимации при открытии приглашения
+                createHeartsAnimation();
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        createFireworks();
+                    }, i * 300);
+                }
             }
 
             function openEnvelope() {
@@ -1420,6 +1601,9 @@
 
             // Открытие конверта
             envelope.addEventListener('click', openEnvelope);
+
+            // Создаем плавающие элементы при загрузке
+            createFloatingElements();
 
             // Функция открытия карт
             function openMap(address) {
