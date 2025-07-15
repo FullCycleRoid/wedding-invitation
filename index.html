@@ -253,59 +253,81 @@
             z-index: 10;
             opacity: 0;
             animation: fadeIn 0.8s 0.9s ease-out forwards;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
+
         .combined-photo-container {
             position: relative;
-            max-width: 800px;
-            margin: 0 auto;
+            width: 100%;
+            padding-top: 105%; /* Соотношение сторон 945/899 ≈ 1.05 */
             background: linear-gradient(to bottom, #ffdcd8, #f8d6cd);
             border-radius: 15px;
             overflow: hidden;
-            padding: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
+
         .combined-photo {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 945px;
-            overflow: hidden;
-            position: relative;
-            background: transparent;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
+
         .combined-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .combined-photo:hover img {
-            transform: scale(1.03);
-        }
+
         .combined-label {
             position: absolute;
-            bottom: 30px;
+            bottom: 5%;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(255, 255, 255, 0.85);
-            padding: 15px 40px;
+            padding: 10px 30px;
             border-radius: 50px;
             font-family: 'Parisienne', cursive;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #e7a493;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             z-index: 20;
             transition: all 0.4s ease;
             border: 1px solid rgba(231, 164, 147, 0.3);
+            white-space: nowrap;
         }
-        .combined-photo:hover .combined-label {
-            background: #e7a493;
-            color: white;
-            transform: translateX(-50%) translateY(-10px);
-            box-shadow: 0 15px 35px rgba(231, 164, 147, 0.3);
+
+        @media (max-width: 768px) {
+            .combined-photo-container {
+                padding-top: 110%; /* Чуть больше для мобилок */
+            }
+            
+            .combined-label {
+                font-size: 2rem;
+                padding: 8px 25px;
+                bottom: 4%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .combined-photo-container {
+                padding-top: 120%; /* Для очень маленьких экранов */
+            }
+            
+            .combined-label {
+                font-size: 1.8rem;
+                padding: 6px 20px;
+                bottom: 3%;
+            }
         }
 
         /* Таймер */
