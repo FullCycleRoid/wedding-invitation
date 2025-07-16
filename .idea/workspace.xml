@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Hearts animation version">
+    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Fix calendar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -116,7 +116,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752587901420</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fix calendar">
+      <option name="closed" value="true" />
+      <created>1752588278073</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1752588278073</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -126,6 +134,7 @@
     <MESSAGE value="+- версия с отступами" />
     <MESSAGE value="Норм версия" />
     <MESSAGE value="Hearts animation version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hearts animation version" />
+    <MESSAGE value="Fix calendar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix calendar" />
   </component>
 </project>
