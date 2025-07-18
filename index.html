@@ -556,7 +556,6 @@
             flex-direction: column;
             align-items: center;
         }
-        }
         .timing-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
@@ -1449,8 +1448,7 @@
                         </div>
                         <h3 class="gift-title">Подарки</h3>
                         <p class="gift-text">
-                            Просим Вас не беспокоиться из за выбора цветов, мы отправимся в свадебное путешествие и цветочный аромат не успеет нас порадовать. Ваши поздравления в конвертах помогут нам в осуществлении совместных желаний!
-                        </p>
+                        Просим Вас не беспокоиться с выбором цветов, мы отправимся в свадебное путешествие и цветочный аромат не успеет нас порадовать. Ваши поздравления в конвертах помогут нам в осуществлении совместных желаний!                        </p>
                     </div>
                     <div class="dress-card">
                         <div class="dress-icon">
@@ -1469,8 +1467,8 @@
                 <div class="host-section">
                     <h3 class="host-title">Ведущий</h3>
                     <p class="host-text">
-                        Если у вас есть творческие идеи, поздравления или сюрпризы для нас,<br>
-                        пожалуйста, свяжитесь с нашим ведущим. Он поможет организовать ваш вклад в наш праздник,<br>
+                        Если у вас есть творческие идеи, поздравления или сюрпризы,<br>
+                        пожалуйста, свяжитесь с нашим ведущим. Он поможет организовать ваш вклад в праздник,<br>
                         сделав его ещё более незабываемым.
                     </p>
                     <div class="host-contact">
@@ -1514,9 +1512,19 @@
     </div>
 
     <!-- Модальное окно для фотографий -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
+    <div id="imageModal" class="modal" style="display:none;position:fixed;z-index:1000;padding-top:100px;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.9);">
+        <span class="close" style="position:absolute;top:20px;right:35px;color:#f1f1f1;font-size:40px;font-weight:bold;transition:0.3s;cursor:pointer;">&times;</span>
+        <img class="modal-content" id="modalImage" style="margin:auto;display:block;width:80%;max-width:900px;">
+    </div>
+
+    <!-- Модальное окно для карт -->
+    <div id="mapModal" class="modal" style="display:none;position:fixed;z-index:1000;padding-top:100px;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.9);">
+        <div style="position:relative;background:#fff;margin:auto;padding:20px;border-radius:10px;max-width:800px;width:90%;">
+            <span class="close-map" style="position:absolute;top:10px;right:15px;color:#000;font-size:30px;font-weight:bold;cursor:pointer;">&times;</span>
+            <h3 id="mapTitle" style="text-align:center;margin-bottom:20px;color:#5c3a37;"></h3>
+            <div id="mapAddress" style="text-align:center;margin-bottom:20px;font-size:1.2rem;"></div>
+            <div id="mapContainer" style="height:400px;width:100%;border-radius:10px;overflow:hidden;"></div>
+        </div>
     </div>
 
     <script>
@@ -1631,17 +1639,10 @@
             // Создаем плавающие элементы при загрузке
             createFloatingElements();
 
-            // Функция открытия карт
-            function openMap(address) {
-                const encodedAddress = encodeURIComponent(address);
-                const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-                window.open(mapUrl, '_blank');
-            }
-
             // Модальное окно для фотографий
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
-            const closeBtn = document.getElementsByClassName('close')[0];
+            const closeBtn = modal.querySelector('.close');
 
             function openModal(imgSrc) {
                 modal.style.display = 'block';
@@ -1658,15 +1659,46 @@
                 }
             }
 
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.style.display === 'block') {
-                    modal.style.display = 'none';
-                }
-            });
+            // Модальное окно для карт
+            const mapModal = document.getElementById('mapModal');
+            const mapTitle = document.getElementById('mapTitle');
+            const mapAddress = document.getElementById('mapAddress');
+            const closeMapBtn = mapModal.querySelector('.close-map');
+            const mapContainer = document.getElementById('mapContainer');
 
+            function showMapModal(title, address) {
+                mapTitle.textContent = title;
+                mapAddress.textContent = address;
+                mapModal.style.display = 'block';
+
+                // Очищаем предыдущую карту
+                mapContainer.innerHTML = '';
+
+                // Создаем iframe с картой
+                const encodedAddress = encodeURIComponent(address);
+                const mapIframe = document.createElement('iframe');
+                mapIframe.style.width = '100%';
+                mapIframe.style.height = '100%';
+                mapIframe.style.border = 'none';
+                mapIframe.src = `https://yandex.ru/map-widget/v1/?text=${encodedAddress}`;
+                mapContainer.appendChild(mapIframe);
+            }
+
+            closeMapBtn.onclick = function() {
+                mapModal.style.display = 'none';
+            }
+
+            mapModal.onclick = function(e) {
+                if (e.target === mapModal) {
+                    mapModal.style.display = 'none';
+                }
+            }
+
+            // Закрытие модальных окон по ESC
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && mapModal.style.display === 'block') {
-                    closeMapModal();
+                if (e.key === 'Escape') {
+                    if (modal.style.display === 'block') modal.style.display = 'none';
+                    if (mapModal.style.display === 'block') mapModal.style.display = 'none';
                 }
             });
 
