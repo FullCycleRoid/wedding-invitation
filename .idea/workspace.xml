@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Update title and favicon">
+    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Remove ----">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -196,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752845904989</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Remove ----">
+      <option name="closed" value="true" />
+      <created>1752846037797</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1752846037797</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -216,6 +224,7 @@
     <MESSAGE value="Descriptions" />
     <MESSAGE value="Last version" />
     <MESSAGE value="Update title and favicon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update title and favicon" />
+    <MESSAGE value="Remove ----" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove ----" />
   </component>
 </project>
