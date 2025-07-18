@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Descriptions">
+    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Last version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -180,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752839375624</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Last version">
+      <option name="closed" value="true" />
+      <created>1752839719088</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1752839719088</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -198,6 +206,7 @@
     <MESSAGE value="Remove before content" />
     <MESSAGE value="Change photo" />
     <MESSAGE value="Descriptions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Descriptions" />
+    <MESSAGE value="Last version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last version" />
   </component>
 </project>
