@@ -1535,15 +1535,6 @@
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
-    <!-- Модальное окно для карт -->
-    <div id="mapModal" class="modal">
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: #fff; border-radius: 12px; padding: 30px 20px; min-width: 260px; max-width: 90vw; box-shadow: 0 10px 30px rgba(178,115,119,0.15); text-align: center;">
-            <div id="mapModalTitle" style="font-size: 1.2rem; color: #b27377; font-weight: 600; margin-bottom: 10px;"></div>
-            <div id="mapModalAddress" style="font-size: 1rem; color: #5c3a37; margin-bottom: 18px;"></div>
-            <button id="openMapBtn" style="background: #b27377; color: #fff; border: none; border-radius: 8px; padding: 10px 22px; font-size: 1rem; font-family: 'Montserrat',sans-serif; cursor: pointer; font-weight: 600; transition: background 0.2s;">Открыть в Google Maps</button>
-            <div><button onclick="closeMapModal()" style="margin-top: 18px; background: none; color: #b27377; border: none; font-size: 1rem; cursor: pointer;">Закрыть</button></div>
-        </div>
-    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1690,33 +1681,6 @@
                 }
             });
 
-            // Модальное окно для карт
-            const mapModal = document.getElementById('mapModal');
-            const mapModalTitle = document.getElementById('mapModalTitle');
-            const mapModalAddress = document.getElementById('mapModalAddress');
-            const openMapBtn = document.getElementById('openMapBtn');
-            let currentMapAddress = '';
-            function showMapModal(title, address) {
-                mapModal.style.display = 'block';
-                mapModalTitle.textContent = title;
-                mapModalAddress.textContent = address;
-                currentMapAddress = address;
-            }
-            function closeMapModal() {
-                mapModal.style.display = 'none';
-            }
-            openMapBtn.onclick = function() {
-                if (currentMapAddress) {
-                    const encodedAddress = encodeURIComponent(currentMapAddress);
-                    const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-                    window.open(mapUrl, '_blank');
-                }
-            };
-            mapModal.onclick = function(e) {
-                if (e.target === mapModal) {
-                    closeMapModal();
-                }
-            };
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && mapModal.style.display === 'block') {
                     closeMapModal();
