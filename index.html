@@ -537,7 +537,7 @@
             cursor: not-allowed;
         }
 
-        /* Тайминг дня - ПЕРЕРАБОТАННЫЙ БЛОК */
+        /* Тайминг дня */
         .timing-section {
             background: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(178, 115, 119, 0.3);
@@ -1252,6 +1252,63 @@
                 min-width: 100%;
             }
         }
+
+        /* Исправления для таймера на маленьких экранах */
+        @media (max-width: 420px) {
+            .countdown-timer {
+                gap: 5px;
+            }
+            .timer-item {
+                min-width: 20vw;
+                max-width: 22vw;
+                padding: 8px 4px;
+            }
+            .timer-value {
+                font-size: 1.8rem;
+            }
+            .timer-label {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Исправления для подписи */
+        @media (max-width: 480px) {
+            .signature {
+                padding: 0 20px;
+            }
+            .signature::before,
+            .signature::after {
+                width: 20px;
+            }
+            .signature:hover::before,
+            .signature:hover::after {
+                width: 30px;
+            }
+        }
+        @media (max-width: 380px) {
+            .signature {
+                font-size: 2.5rem;
+                padding: 0 15px;
+            }
+            .signature::before,
+            .signature::after {
+                width: 15px;
+            }
+            .signature:hover::before,
+            .signature:hover::after {
+                width: 20px;
+            }
+        }
+        @media (max-width: 320px) {
+            .signature {
+                font-size: 2.2rem;
+                padding: 0 10px;
+            }
+            .signature::before,
+            .signature::after {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1345,7 +1402,7 @@
                     <div class="calendar-date" style="margin-top: 18px; font-size: 1.2rem; color: #b27377; font-weight: 600;">21 сентября 2025 года</div>
                 </div>
 
-                <!-- Тайминг дня - ПЕРЕРАБОТАННЫЙ -->
+                <!-- Тайминг дня -->
                 <div class="timing-section">
                     <h3 class="timing-title">Тайминг дня</h3>
 
