@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Fix calendar">
+    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Weird timing blocks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -56,7 +56,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-598b0484d0b5-e2d783800521-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26927.74" />
+        <option value="bundled-python-sdk-4c141bd692a7-e2d783800521-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26927.90" />
       </set>
     </attachedChunks>
   </component>
@@ -124,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752588278073</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Weird timing blocks">
+      <option name="closed" value="true" />
+      <created>1752662456472</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1752662456472</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -135,6 +143,7 @@
     <MESSAGE value="Норм версия" />
     <MESSAGE value="Hearts animation version" />
     <MESSAGE value="Fix calendar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix calendar" />
+    <MESSAGE value="Weird timing blocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weird timing blocks" />
   </component>
 </project>
