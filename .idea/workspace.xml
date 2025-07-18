@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="New timing blocks">
+    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Remove before content">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +139,31 @@
       <option name="project" value="LOCAL" />
       <updated>1752836762330</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Last beautiful version">
+      <option name="closed" value="true" />
+      <created>1752838062982</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1752838062982</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Remove map modal">
+      <option name="closed" value="true" />
+      <created>1752838403256</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1752838403256</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Remove before content">
+      <option name="closed" value="true" />
+      <created>1752838639760</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1752838639760</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -153,6 +176,9 @@
     <MESSAGE value="Fix calendar" />
     <MESSAGE value="Weird timing blocks" />
     <MESSAGE value="New timing blocks" />
-    <option name="LAST_COMMIT_MESSAGE" value="New timing blocks" />
+    <MESSAGE value="Last beautiful version" />
+    <MESSAGE value="Remove map modal" />
+    <MESSAGE value="Remove before content" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove before content" />
   </component>
 </project>
