@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Remove ----">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Timings" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,7 +201,23 @@
       <option name="project" value="LOCAL" />
       <updated>1752846037797</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Timings">
+      <option name="closed" value="true" />
+      <created>1752847730324</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1752847730324</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Timings">
+      <option name="closed" value="true" />
+      <created>1752847805573</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1752847805574</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -225,6 +238,7 @@
     <MESSAGE value="Last version" />
     <MESSAGE value="Update title and favicon" />
     <MESSAGE value="Remove ----" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove ----" />
+    <MESSAGE value="Timings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Timings" />
   </component>
 </project>
