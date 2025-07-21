@@ -66,7 +66,6 @@
             color: rgba(178, 115, 119, 0.4);
             animation: float 15s infinite linear;
             opacity: 0;
-            z-index: 2;
         }
         .circle {
             position: absolute;
@@ -74,7 +73,6 @@
             background: rgba(178, 115, 119, 0.1);
             animation: float 20s infinite linear;
             opacity: 0;
-            z-index: 2;
         }
         .confetti {
             position: absolute;
@@ -83,48 +81,6 @@
             background: rgba(255, 215, 0, 0.7);
             animation: confetti-fall 5s linear forwards;
             opacity: 0;
-            z-index: 3;
-        }
-        .firefly {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: #fff9c4;
-            box-shadow: 0 0 10px #fff9c4, 0 0 20px #fff9c4;
-            animation: fireflyMove 15s infinite linear;
-            opacity: 0;
-            z-index: 3;
-        }
-        .sparkle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
-            animation: sparklePulse 3s infinite alternate;
-            z-index: 3;
-        }
-        .glowing-dot {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ff6b6b;
-            box-shadow: 0 0 15px #ff6b6b, 0 0 30px #ff6b6b;
-            animation: glowing 2s infinite alternate;
-            z-index: 3;
-        }
-        .twinkling-star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 5px #fff, 0 0 10px #fff;
-            animation: twinkle 4s infinite;
-            z-index: 3;
         }
 
         /* Конверт */
@@ -310,7 +266,6 @@
             display: inline-block;
             opacity: 0;
             animation: fadeIn 0.8s 0.5s ease-out forwards;
-            text-shadow: 0 0 10px rgba(178, 115, 119, 0.3);
         }
         .invitation-names span.heart {
             color: #b27377;
@@ -386,7 +341,6 @@
             margin-bottom: 15px;
             font-weight: 500;
             letter-spacing: 1px;
-            text-shadow: 0 0 5px rgba(178, 115, 119, 0.2);
         }
         .countdown-date {
             font-size: 1.5rem;
@@ -444,11 +398,6 @@
             display: block;
             line-height: 1;
             margin-bottom: 8px;
-            transition: all 0.3s ease;
-        }
-        .timer-item:hover .timer-value {
-            color: #b27377;
-            text-shadow: 0 0 10px rgba(178, 115, 119, 0.3);
         }
         .timer-label {
             font-size: 1rem;
@@ -484,11 +433,6 @@
             border: 1px solid rgba(178, 115, 119, 0.3);
             backdrop-filter: blur(5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        .invitation-text:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         .invitation-text::before,
         .invitation-text::after {
@@ -584,18 +528,6 @@
             color: #fff;
             font-weight: 700;
             box-shadow: 0 2px 8px rgba(178, 115, 119, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-        .calendar-date-tile.selected::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
-            animation: pulseGlow 2s infinite;
         }
         .calendar-date-tile.today {
             border: 2px solid #b27377;
@@ -713,22 +645,10 @@
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            position: relative;
         }
         .timing-event-block:hover {
             transform: scale(1.05);
             background: rgba(255, 255, 255, 0.9);
-        }
-        .timing-event-block::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
-            animation: sparkleMove 4s infinite linear;
-            pointer-events: none;
         }
 
         .timing-time {
@@ -756,21 +676,9 @@
             background: rgba(241, 216, 211, 0.5);
             border-radius: 8px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
         .timing-location:hover {
             background: rgba(178, 115, 119, 0.1);
-        }
-        .timing-location::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
-            animation: shimmer 2s infinite;
         }
 
         .timing-location i {
@@ -810,21 +718,10 @@
             cursor: pointer;
             transition: all 0.5s ease;
             border: 1px solid rgba(178, 115, 119, 0.3);
-            position: relative;
         }
         .timing-photo:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
-        }
-        .timing-photo::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-            animation: photoGlow 4s infinite linear;
         }
         .timing-photo img {
             width: 100%;
@@ -878,22 +775,9 @@
             color: #b27377;
             margin-bottom: 20px;
             transition: transform 0.5s ease, color 0.5s ease;
-            position: relative;
-        }
-        .gift-icon::after, .dress-icon::after {
-            content: "";
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(178, 115, 119, 0.2) 0%, rgba(178, 115, 119, 0) 70%);
-            animation: iconPulse 2s infinite alternate;
-            pointer-events: none;
         }
         .gift-card:hover .gift-icon, .dress-card:hover .dress-icon {
-            transform: rotate(15deg) scale(1.2);
+            transform: scale(1.2);
             color: #5c3a37;
         }
         .gift-title, .dress-title {
@@ -941,17 +825,6 @@
             align-items: center;
             backdrop-filter: blur(5px);
         }
-        .host-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
-            animation: sparkleMove 5s infinite linear;
-            pointer-events: none;
-        }
         .host-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
@@ -985,26 +858,12 @@
             padding: 10px 20px;
             border-radius: 30px;
             background: rgba(178, 115, 119, 0.1);
-            position: relative;
-            overflow: hidden;
-            z-index: 2;
         }
         .host-contact a:hover {
             color: white;
             background: #b27377;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(178, 115, 119, 0.3);
-        }
-        .host-contact a::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
-            animation: pulseGlow 2s infinite;
-            pointer-events: none;
         }
 
         /* Подпись */
@@ -1028,23 +887,10 @@
             padding: 0 32px;
             transition: all 0.5s ease;
             vertical-align: middle;
-            text-shadow: 0 0 10px rgba(178, 115, 119, 0.3);
-            animation: glow 2s infinite alternate;
         }
         .signature:hover {
             color: #5c3a37;
             transform: scale(1.05);
-        }
-        .signature::before,
-        .signature::after {
-            content: "✧";
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
-            color: #b27377;
-            animation: spin 4s infinite linear;
-            opacity: 0.8;
         }
         .signature::before {
             left: 0;
@@ -1054,7 +900,8 @@
         }
         .signature:hover::before,
         .signature:hover::after {
-            animation: spinFast 1s infinite linear;
+            width: 60px;
+            background: #b05d53;
         }
 
         /* Анимации */
@@ -1152,69 +999,6 @@
                 transform: translateY(-40px) rotate(360deg);
                 opacity: 0;
             }
-        }
-        @keyframes fireflyMove {
-            0% {
-                transform: translate(0, 0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(100px, 100px);
-                opacity: 0;
-            }
-        }
-        @keyframes sparklePulse {
-            0% { transform: scale(1); opacity: 0.3; }
-            100% { transform: scale(1.5); opacity: 0.8; }
-        }
-        @keyframes glowing {
-            0% { box-shadow: 0 0 5px #ff6b6b; }
-            100% { box-shadow: 0 0 20px #ff6b6b, 0 0 30px #ff6b6b; }
-        }
-        @keyframes twinkle {
-            0% { opacity: 0.2; }
-            50% { opacity: 1; }
-            100% { opacity: 0.2; }
-        }
-        @keyframes glow {
-            from { text-shadow: 0 0 5px rgba(178, 115, 119, 0.5), 0 0 10px rgba(178, 115, 119, 0.5); }
-            to { text-shadow: 0 0 10px rgba(178, 115, 119, 0.8), 0 0 20px rgba(178, 115, 119, 0.8), 0 0 30px rgba(178, 115, 119, 0.6); }
-        }
-        @keyframes pulseGlow {
-            0% { transform: scale(0.8); opacity: 0; }
-            50% { opacity: 0.6; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        @keyframes photoGlow {
-            0% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.5); opacity: 0.1; }
-            100% { transform: scale(1); opacity: 0.3; }
-        }
-        @keyframes sparkleMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(200px, 200px); }
-        }
-        @keyframes iconPulse {
-            0% { transform: scale(1); opacity: 0.3; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
-        @keyframes spin {
-            0% { transform: translateY(-50%) rotate(0deg); }
-            100% { transform: translateY(-50%) rotate(360deg); }
-        }
-        @keyframes spinFast {
-            0% { transform: translateY(-50%) rotate(0deg); }
-            100% { transform: translateY(-50%) rotate(360deg); }
         }
 
         /* Адаптивные стили */
@@ -1742,49 +1526,8 @@
                 const heartColors = ['#ff6b6b', '#ff8e8e', '#ffb7b7', '#ff9aa2', '#ffb7c5'];
                 const circleColors = ['rgba(178, 115, 119, 0.1)', 'rgba(207, 164, 166, 0.1)', 'rgba(241, 216, 211, 0.1)'];
 
-                // Создаем светлячков (огоньки)
-                for (let i = 0; i < 30; i++) {
-                    const firefly = document.createElement('div');
-                    firefly.classList.add('firefly');
-                    firefly.style.left = `${Math.random() * 100}vw`;
-                    firefly.style.top = `${Math.random() * 100}vh`;
-                    firefly.style.animationDelay = `${Math.random() * 5}s`;
-                    firefly.style.animationDuration = `${Math.random() * 15 + 10}s`;
-                    backgroundAnimations.appendChild(firefly);
-                }
-
-                // Создаем мерцающие звездочки
-                for (let i = 0; i < 50; i++) {
-                    const star = document.createElement('div');
-                    star.classList.add('twinkling-star');
-                    star.style.left = `${Math.random() * 100}vw`;
-                    star.style.top = `${Math.random() * 100}vh`;
-                    star.style.animationDelay = `${Math.random() * 3}s`;
-                    backgroundAnimations.appendChild(star);
-                }
-
-                // Создаем светящиеся точки
-                for (let i = 0; i < 20; i++) {
-                    const dot = document.createElement('div');
-                    dot.classList.add('glowing-dot');
-                    dot.style.left = `${Math.random() * 100}vw`;
-                    dot.style.top = `${Math.random() * 100}vh`;
-                    dot.style.animationDelay = `${Math.random() * 2}s`;
-                    backgroundAnimations.appendChild(dot);
-                }
-
-                // Создаем искры
-                for (let i = 0; i < 40; i++) {
-                    const sparkle = document.createElement('div');
-                    sparkle.classList.add('sparkle');
-                    sparkle.style.left = `${Math.random() * 100}vw`;
-                    sparkle.style.top = `${Math.random() * 100}vh`;
-                    sparkle.style.animationDelay = `${Math.random() * 3}s`;
-                    backgroundAnimations.appendChild(sparkle);
-                }
-
                 // Создаем сердечки
-                for (let i = 0; i < 30; i++) {
+                for (let i = 0; i < 20; i++) {
                     const heart = document.createElement('div');
                     heart.classList.add('heart');
                     heart.innerHTML = '❤';
@@ -1797,7 +1540,7 @@
                 }
 
                 // Создаем кружочки
-                for (let i = 0; i < 20; i++) {
+                for (let i = 0; i < 15; i++) {
                     const circle = document.createElement('div');
                     circle.classList.add('circle');
                     const size = Math.random() * 30 + 10;
@@ -1831,28 +1574,9 @@
                 }, 1500);
             }
 
-            // Анимация конфетти
-            function createConfetti() {
-                for (let i = 0; i < 150; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.classList.add('confetti');
-                    confetti.style.left = `${Math.random() * 100}vw`;
-                    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
-                    confetti.style.width = `${Math.random() * 10 + 5}px`;
-                    confetti.style.height = `${Math.random() * 10 + 5}px`;
-                    confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                    confetti.style.animationDelay = `${Math.random() * 0.5}s`;
-                    document.body.appendChild(confetti);
-
-                    setTimeout(() => {
-                        confetti.remove();
-                    }, 5000);
-                }
-            }
-
             // Анимация сердечек при открытии
             function createHeartsAnimation() {
-                for (let i = 0; i < 50; i++) {
+                for (let i = 0; i < 30; i++) {
                     const heart = document.createElement('div');
                     heart.classList.add('heart');
                     heart.innerHTML = '❤';
@@ -1879,30 +1603,10 @@
 
                 // Запускаем анимации при открытии приглашения
                 createHeartsAnimation();
-                createConfetti();
-
-                for (let i = 0; i < 8; i++) {
+                for (let i = 0; i < 5; i++) {
                     setTimeout(() => {
                         createFireworks();
                     }, i * 300);
-                }
-
-                // Добавляем дополнительные светящиеся элементы
-                for (let i = 0; i < 20; i++) {
-                    setTimeout(() => {
-                        const spark = document.createElement('div');
-                        spark.classList.add('sparkle');
-                        spark.style.position = 'fixed';
-                        spark.style.zIndex = '100';
-                        spark.style.left = `${Math.random() * 100}%`;
-                        spark.style.top = `${Math.random() * 100}%`;
-                        spark.style.animation = 'sparklePulse 1s forwards';
-                        document.body.appendChild(spark);
-
-                        setTimeout(() => {
-                            spark.remove();
-                        }, 1000);
-                    }, i * 100);
                 }
             }
 
@@ -1913,9 +1617,6 @@
                     showInvitation();
                     document.body.style.overflow = 'auto';
                 }, 1800);
-
-                // Анимация разлетающихся бумажек
-                createConfetti();
             }
 
             // Открытие конверта
