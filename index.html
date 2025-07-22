@@ -454,10 +454,9 @@
             transform: rotate(180deg);
         }
 
-        /* Календарик плитками */
+        /* Календарик плитками - ОБНОВЛЕНО ДЛЯ ДЕСКТОПА */
         .calendar-section {
             margin: 40px auto;
-            max-width: 340px;
             background: rgba(255, 255, 255, 0.7);
             border-radius: 15px;
             padding: 25px 15px 30px 15px;
@@ -472,6 +471,13 @@
             text-align: center;
             border: 1px solid rgba(178, 115, 119, 0.3);
             backdrop-filter: blur(5px);
+            max-width: 100%;
+            width: 100%;
+        }
+        @media (min-width: 769px) {
+            .calendar-section {
+                max-width: 700px;
+            }
         }
         .calendar-title {
             font-family: 'Cormorant Garamond', serif;
@@ -497,6 +503,15 @@
             gap: 8px;
             margin-top: 18px;
             margin-bottom: 0;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (min-width: 769px) {
+            .calendar-grid {
+                max-width: 500px;
+                gap: 10px;
+            }
         }
         .calendar-day, .calendar-date-tile {
             font-family: 'Montserrat', sans-serif;
@@ -507,6 +522,7 @@
             outline: none;
             padding: 0;
             margin: 0;
+            transition: transform 0.3s ease, background 0.3s;
         }
         .calendar-day {
             font-weight: 600;
@@ -521,13 +537,20 @@
             font-size: 1.1rem;
             color: #5c3a37;
             cursor: default;
-            transition: background 0.2s, color 0.2s;
+            transition: background 0.2s, color 0.2s, transform 0.3s;
+        }
+        @media (min-width: 769px) {
+            .calendar-date-tile {
+                padding: 10px 0;
+                font-size: 1.2rem;
+            }
         }
         .calendar-date-tile.selected {
             background: #b27377;
             color: #fff;
             font-weight: 700;
             box-shadow: 0 2px 8px rgba(178, 115, 119, 0.15);
+            animation: pulse 1.5s infinite;
         }
         .calendar-date-tile.today {
             border: 2px solid #b27377;
@@ -537,14 +560,20 @@
             background: none;
             cursor: not-allowed;
         }
+        @media (hover: hover) and (pointer: fine) {
+            .calendar-date-tile:not(.selected):not(.disabled):hover {
+                transform: scale(1.1);
+                z-index: 1;
+                background: rgba(178, 115, 119, 0.2);
+            }
+        }
 
-        /* Тайминг дня */
+        /* Тайминг дня - ОБНОВЛЕНО ДЛЯ ДЕСКТОПА */
         .timing-section {
             background: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(178, 115, 119, 0.3);
             padding: 40px 30px;
             margin: 40px auto;
-            max-width: 800px;
             border-radius: 15px;
             position: relative;
             overflow: hidden;
@@ -556,6 +585,26 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            max-width: 800px;
+        }
+        .timing-locations-wrapper {
+            width: 100%;
+        }
+        @media (min-width: 769px) {
+            .timing-locations-wrapper {
+                display: flex;
+                gap: 30px;
+                margin-bottom: 30px;
+            }
+            .timing-location-container {
+                flex: 1;
+            }
+        }
+        @media (max-width: 768px) {
+            .timing-location-container:not(:last-child) {
+                margin-bottom: 30px;
+            }
         }
         .timing-title {
             font-family: 'Cormorant Garamond', serif;
@@ -1378,40 +1427,42 @@
                 <div class="timing-section">
                     <h3 class="timing-title">Тайминг дня</h3>
 
-                    <!-- Дворец бракосочетания -->
-                    <div class="timing-location-container">
-                        <h4 class="timing-location-title">Дворец бракосочетания №2</h4>
-                        <div class="timing-item" onclick="showMapModal('Дворец бракосочетания №2', 'улица Фурштатская, дом 52, Санкт-Петербург')">
-                            <div class="timing-events">
-                                <div class="timing-event-block">
-                                    <div class="timing-time">15:30 - 16:00</div>
-                                    <div class="timing-event">Сбор гостей</div>
+                    <div class="timing-locations-wrapper">
+                        <!-- Дворец бракосочетания -->
+                        <div class="timing-location-container">
+                            <h4 class="timing-location-title">Дворец бракосочетания №2</h4>
+                            <div class="timing-item" onclick="showMapModal('Дворец бракосочетания №2', 'улица Фурштатская, дом 52, Санкт-Петербург')">
+                                <div class="timing-events">
+                                    <div class="timing-event-block">
+                                        <div class="timing-time">15:30 - 16:00</div>
+                                        <div class="timing-event">Сбор гостей</div>
+                                    </div>
+                                    <div class="timing-event-block">
+                                        <div class="timing-time">16:00 - 16:30</div>
+                                        <div class="timing-event">Церемония бракосочетания</div>
+                                    </div>
                                 </div>
-                                <div class="timing-event-block">
-                                    <div class="timing-time">16:00 - 16:30</div>
-                                    <div class="timing-event">Церемония бракосочетания</div>
+                                <div class="timing-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div class="timing-address">Фурштатская 52</div>
                                 </div>
-                            </div>
-                            <div class="timing-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div class="timing-address">Фурштатская 52</div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Ресторан -->
-                    <div class="timing-location-container">
-                        <h4 class="timing-location-title">Ресторан "Нева Холл"</h4>
-                        <div class="timing-item" onclick="showMapModal('Ресторан &quot;Нева Холл&quot;', 'Сапёрный переулок, 5, Санкт-Петербург')">
-                            <div class="timing-events">
-                                <div class="timing-event-block">
-                                    <div class="timing-time">17:00 - 23:00</div>
-                                    <div class="timing-event">Банкет</div>
+                        <!-- Ресторан -->
+                        <div class="timing-location-container">
+                            <h4 class="timing-location-title">Ресторан "Нева Холл"</h4>
+                            <div class="timing-item" onclick="showMapModal('Ресторан &quot;Нева Холл&quot;', 'Сапёрный переулок, 5, Санкт-Петербург')">
+                                <div class="timing-events">
+                                    <div class="timing-event-block">
+                                        <div class="timing-time">17:00 - 23:00</div>
+                                        <div class="timing-event">Банкет</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="timing-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div class="timing-address">Сапёрный пер. 5</div>
+                                <div class="timing-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div class="timing-address">Сапёрный пер. 5</div>
+                                </div>
                             </div>
                         </div>
                     </div>
