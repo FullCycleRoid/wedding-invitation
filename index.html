@@ -1431,7 +1431,7 @@
                         <!-- Дворец бракосочетания -->
                         <div class="timing-location-container">
                             <h4 class="timing-location-title">Дворец бракосочетания №2</h4>
-                            <div class="timing-item" onclick="openMapApp('Фурштатская 52, Санкт-Петербург')">
+                            <div class="timing-item" onclick="openMapApp('Дворец бракосочетания №2, Фурштатская улица, 52, Санкт-Петербург')">
                                 <div class="timing-events">
                                     <div class="timing-event-block">
                                         <div class="timing-time">15:30 - 16:00</div>
@@ -1452,7 +1452,7 @@
                         <!-- Ресторан -->
                         <div class="timing-location-container">
                             <h4 class="timing-location-title">Ресторан "Нева Холл"</h4>
-                            <div class="timing-item" onclick="openMapApp('Сапёрный переулок, 5, Санкт-Петербург')">
+                            <div class="timing-item" onclick="openMapApp('Нева Холл, Сапёрный переулок, 5, Санкт-Петербург')">
                                 <div class="timing-events">
                                     <div class="timing-event-block">
                                         <div class="timing-time">17:00 - 23:00</div>
@@ -1686,32 +1686,32 @@
                 }
             }
 
-            // Открытие карт в приложении
-            function openMapApp(address) {
-                // Определяем платформу пользователя
-                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            // Улучшенная функция для открытия карт
+            window.openMapApp = function(address) {
                 const encodedAddress = encodeURIComponent(address);
-
-                // Формируем URL для открытия в приложении
+                const userAgent = navigator.userAgent.toLowerCase();
                 let mapUrl;
-                if (isIOS) {
-                    // Для iOS используем Apple Maps
+
+                // Определяем устройство и выбираем подходящий сервис
+                if (/iphone|ipad|ipod/.test(userAgent)) {
+                    // Для iOS - Apple Maps
                     mapUrl = `maps://?q=${encodedAddress}`;
-                } else {
-                    // Для Android используем Google Maps
+                } else if (/android/.test(userAgent)) {
+                    // Для Android - Google Maps
                     mapUrl = `geo:0,0?q=${encodedAddress}`;
+                } else {
+                    // Для ПК и других устройств - Яндекс.Карты
+                    mapUrl = `https://yandex.ru/maps/?text=${encodedAddress}`;
                 }
 
-                // Пытаемся открыть нативное приложение
-                window.location.href = mapUrl;
+                // Пытаемся открыть приложение
+                const newWindow = window.open(mapUrl, '_blank');
 
-                // Если приложение не открылось, открываем Яндекс.Карты в браузере через 300 мс
-                setTimeout(() => {
-                    if (!document.hidden) {
-                        window.open(`https://yandex.ru/maps/?text=${encodedAddress}`, '_blank');
-                    }
-                }, 300);
-            }
+                // Если не получилось открыть (например, в Telegram), открываем Яндекс.Карты
+                if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                    window.open(`https://yandex.ru/maps/?text=${encodedAddress}`, '_blank');
+                }
+            };
 
             // Закрытие модальных окон по ESC
             document.addEventListener('keydown', function(e) {
