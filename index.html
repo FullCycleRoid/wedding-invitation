@@ -1431,7 +1431,7 @@
                         <!-- Дворец бракосочетания -->
                         <div class="timing-location-container">
                             <h4 class="timing-location-title">Дворец бракосочетания №2</h4>
-                            <div class="timing-item" onclick="showMapModal('Дворец бракосочетания №2', 'улица Фурштатская, дом 52, Санкт-Петербург')">
+                            <div class="timing-item" onclick="openMapApp('Фурштатская 52, Санкт-Петербург')">
                                 <div class="timing-events">
                                     <div class="timing-event-block">
                                         <div class="timing-time">15:30 - 16:00</div>
@@ -1452,7 +1452,7 @@
                         <!-- Ресторан -->
                         <div class="timing-location-container">
                             <h4 class="timing-location-title">Ресторан "Нева Холл"</h4>
-                            <div class="timing-item" onclick="showMapModal('Ресторан &quot;Нева Холл&quot;', 'Сапёрный переулок, 5, Санкт-Петербург')">
+                            <div class="timing-item" onclick="openMapApp('Сапёрный переулок, 5, Санкт-Петербург')">
                                 <div class="timing-events">
                                     <div class="timing-event-block">
                                         <div class="timing-time">17:00 - 23:00</div>
@@ -1552,16 +1552,6 @@
     <div id="imageModal" class="modal" style="display:none;position:fixed;z-index:1000;padding-top:100px;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.9);">
         <span class="close" style="position:absolute;top:20px;right:35px;color:#f1f1f1;font-size:40px;font-weight:bold;transition:0.3s;cursor:pointer;">&times;</span>
         <img class="modal-content" id="modalImage" style="margin:auto;display:block;width:80%;max-width:900px;">
-    </div>
-
-    <!-- Модальное окно для карт -->
-    <div id="mapModal" class="modal" style="display:none;position:fixed;z-index:1000;padding-top:100px;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.9);">
-        <div style="position:relative;background:#fff;margin:auto;padding:20px;border-radius:10px;max-width:800px;width:90%;">
-            <span class="close-map" style="position:absolute;top:10px;right:15px;color:#000;font-size:30px;font-weight:bold;cursor:pointer;">&times;</span>
-            <h3 id="mapTitle" style="text-align:center;margin-bottom:20px;color:#5c3a37;"></h3>
-            <div id="mapAddress" style="text-align:center;margin-bottom:20px;font-size:1.2rem;"></div>
-            <div id="mapContainer" style="height:400px;width:100%;border-radius:10px;overflow:hidden;"></div>
-        </div>
     </div>
 
     <script>
@@ -1696,46 +1686,37 @@
                 }
             }
 
-            // Модальное окно для карт
-            const mapModal = document.getElementById('mapModal');
-            const mapTitle = document.getElementById('mapTitle');
-            const mapAddress = document.getElementById('mapAddress');
-            const closeMapBtn = mapModal.querySelector('.close-map');
-            const mapContainer = document.getElementById('mapContainer');
-
-            function showMapModal(title, address) {
-                mapTitle.textContent = title;
-                mapAddress.textContent = address;
-                mapModal.style.display = 'block';
-
-                // Очищаем предыдущую карту
-                mapContainer.innerHTML = '';
-
-                // Создаем iframe с картой
+            // Открытие карт в приложении
+            function openMapApp(address) {
+                // Определяем платформу пользователя
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
                 const encodedAddress = encodeURIComponent(address);
-                const mapIframe = document.createElement('iframe');
-                mapIframe.style.width = '100%';
-                mapIframe.style.height = '100%';
-                mapIframe.style.border = 'none';
-                mapIframe.src = `https://yandex.ru/map-widget/v1/?text=${encodedAddress}`;
-                mapContainer.appendChild(mapIframe);
-            }
 
-            closeMapBtn.onclick = function() {
-                mapModal.style.display = 'none';
-            }
-
-            mapModal.onclick = function(e) {
-                if (e.target === mapModal) {
-                    mapModal.style.display = 'none';
+                // Формируем URL для открытия в приложении
+                let mapUrl;
+                if (isIOS) {
+                    // Для iOS используем Apple Maps
+                    mapUrl = `maps://?q=${encodedAddress}`;
+                } else {
+                    // Для Android используем Google Maps
+                    mapUrl = `geo:0,0?q=${encodedAddress}`;
                 }
+
+                // Пытаемся открыть нативное приложение
+                window.location.href = mapUrl;
+
+                // Если приложение не открылось, открываем Яндекс.Карты в браузере через 300 мс
+                setTimeout(() => {
+                    if (!document.hidden) {
+                        window.open(`https://yandex.ru/maps/?text=${encodedAddress}`, '_blank');
+                    }
+                }, 300);
             }
 
             // Закрытие модальных окон по ESC
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     if (modal.style.display === 'block') modal.style.display = 'none';
-                    if (mapModal.style.display === 'block') mapModal.style.display = 'none';
                 }
             });
 

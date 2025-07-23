@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="Animations back">
+    <list default="true" id="c69d54cb-21f9-4f1c-8990-efd87af3a222" name="Changes" comment="Add photo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,22 +16,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;FullCycleRoid&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/FullCycleRoid/wedding-invitation.git&quot;,
-    &quot;accountId&quot;: &quot;7c4981a8-0140-46ec-a705-2ad296845def&quot;
-  }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="2zGX6HuRsKBBvkF45AyXdLUGqOZ" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2zGBlQ4lhuDB06TcNdLO8S38BtF" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -38,236 +27,121 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/user/PycharmProjects/Go-game-mono"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/comp/PycharmProjects/wedding-invitation&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\comp\PycharmProjects\wedding-invitation" />
     </key>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-python-sdk-4c141bd692a7-e2d783800521-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26927.90" />
-      </set>
-    </attachedChunks>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2b4a5cf9-571d-4b07-af15-2ed72ebdb99f" name="Changes" comment="" />
-      <created>1751358206348</created>
+      <changelist id="c69d54cb-21f9-4f1c-8990-efd87af3a222" name="Changes" comment="" />
+      <created>1751347680251</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1751358206348</updated>
+      <updated>1751347680251</updated>
+      <workItem from="1751347696939" duration="2770000" />
+      <workItem from="1752269646777" duration="3202000" />
+      <workItem from="1752281159759" duration="3926000" />
+      <workItem from="1753243813335" duration="260000" />
+      <workItem from="1753244129017" duration="49000" />
+      <workItem from="1753244180197" duration="689000" />
     </task>
-    <task id="LOCAL-00001" summary="Pink with photo">
+    <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
-      <created>1752505680849</created>
+      <created>1751348912347</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1752505680849</updated>
+      <updated>1751348912347</updated>
     </task>
-    <task id="LOCAL-00002" summary="Update main photo">
+    <task id="LOCAL-00002" summary="init">
       <option name="closed" value="true" />
-      <created>1752578142243</created>
+      <created>1751349507032</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1752578142243</updated>
+      <updated>1751349507032</updated>
     </task>
-    <task id="LOCAL-00003" summary="+- версия">
+    <task id="LOCAL-00003" summary="init">
       <option name="closed" value="true" />
-      <created>1752580472684</created>
+      <created>1751351849084</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1752580472684</updated>
+      <updated>1751351849084</updated>
     </task>
-    <task id="LOCAL-00004" summary="+- версия с отступами">
+    <task id="LOCAL-00004" summary="New versio">
       <option name="closed" value="true" />
-      <created>1752580608654</created>
+      <created>1752271259169</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1752580608654</updated>
+      <updated>1752271259169</updated>
     </task>
-    <task id="LOCAL-00005" summary="Норм версия">
+    <task id="LOCAL-00005" summary="New versio">
       <option name="closed" value="true" />
-      <created>1752581119659</created>
+      <created>1752271289250</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1752581119659</updated>
+      <updated>1752271289250</updated>
     </task>
-    <task id="LOCAL-00006" summary="Hearts animation version">
+    <task id="LOCAL-00006" summary="Add photo">
       <option name="closed" value="true" />
-      <created>1752587901420</created>
+      <created>1752285799961</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1752587901420</updated>
+      <updated>1752285799961</updated>
     </task>
-    <task id="LOCAL-00007" summary="Fix calendar">
-      <option name="closed" value="true" />
-      <created>1752588278073</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1752588278073</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Weird timing blocks">
-      <option name="closed" value="true" />
-      <created>1752662456472</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1752662456472</updated>
-    </task>
-    <task id="LOCAL-00009" summary="New timing blocks">
-      <option name="closed" value="true" />
-      <created>1752836762330</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1752836762330</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Last beautiful version">
-      <option name="closed" value="true" />
-      <created>1752838062982</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1752838062982</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Remove map modal">
-      <option name="closed" value="true" />
-      <created>1752838403256</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1752838403256</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Remove before content">
-      <option name="closed" value="true" />
-      <created>1752838639760</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1752838639760</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Change photo">
-      <option name="closed" value="true" />
-      <created>1752839240267</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1752839240267</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Descriptions">
-      <option name="closed" value="true" />
-      <created>1752839375624</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1752839375624</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Last version">
-      <option name="closed" value="true" />
-      <created>1752839719088</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1752839719088</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Update title and favicon">
-      <option name="closed" value="true" />
-      <created>1752845904989</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1752845904989</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Remove ----">
-      <option name="closed" value="true" />
-      <created>1752846037797</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1752846037797</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Timings">
-      <option name="closed" value="true" />
-      <created>1752847730324</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1752847730324</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Timings">
-      <option name="closed" value="true" />
-      <created>1752847805573</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1752847805574</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Fix Timings">
-      <option name="closed" value="true" />
-      <created>1753085926146</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1753085926146</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Animations">
-      <option name="closed" value="true" />
-      <created>1753110974053</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1753110974053</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Animations back">
-      <option name="closed" value="true" />
-      <created>1753111520533</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1753111520533</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Pink with photo" />
-    <MESSAGE value="Update main photo" />
-    <MESSAGE value="+- версия" />
-    <MESSAGE value="+- версия с отступами" />
-    <MESSAGE value="Норм версия" />
-    <MESSAGE value="Hearts animation version" />
-    <MESSAGE value="Fix calendar" />
-    <MESSAGE value="Weird timing blocks" />
-    <MESSAGE value="New timing blocks" />
-    <MESSAGE value="Last beautiful version" />
-    <MESSAGE value="Remove map modal" />
-    <MESSAGE value="Remove before content" />
-    <MESSAGE value="Change photo" />
-    <MESSAGE value="Descriptions" />
-    <MESSAGE value="Last version" />
-    <MESSAGE value="Update title and favicon" />
-    <MESSAGE value="Remove ----" />
-    <MESSAGE value="Timings" />
-    <MESSAGE value="Fix Timings" />
-    <MESSAGE value="Animations" />
-    <MESSAGE value="Animations back" />
-    <option name="LAST_COMMIT_MESSAGE" value="Animations back" />
+    <MESSAGE value="init" />
+    <MESSAGE value="New versio" />
+    <MESSAGE value="Add photo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add photo" />
   </component>
 </project>
